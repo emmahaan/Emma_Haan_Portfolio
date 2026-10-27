@@ -3,7 +3,7 @@
    - fill in contact details from config.js
    - header divider on scroll, mobile menu
    - gentle fade-in of sections as they scroll into view
-   - résumé jump-link highlighting, copy-email, contact form
+   - resume jump-link highlighting, copy-email, contact form
    ========================================================================== */
 (function () {
   "use strict";
@@ -80,7 +80,7 @@
     targets.forEach(function (el) { io.observe(el); });
   }
 
-  /* ---- Résumé jump links: highlight the section in view ------------------ */
+  /* ---- Resume jump links: highlight the section in view ------------------ */
   function initSectionNav() {
     var nav = $("[data-section-nav]");
     if (!nav || !("IntersectionObserver" in window)) return;

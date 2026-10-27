@@ -9,14 +9,14 @@ A static GitHub Pages site built with plain HTML, CSS and JavaScript. It has no 
 | `index.html` | Home: intro with photo, what I bring, career interests and goals, featured projects |
 | `about.html` | About Me: photo as the focal point, background, aspirations, strengths, experience highlights, tools |
 | `portfolio.html` | Work: a project switcher and a slide viewer for each project, with the title above and the blurb below |
-| `resume.html` | Résumé: download button, education, experience, leadership, skills, certifications |
-| `contact.html` | Contact: email (with a copy button), LinkedIn, résumé, and a quick message form |
+| `resume.html` | Resume: download button, education, experience, leadership, skills, certifications |
+| `contact.html` | Contact: email (with a copy button), LinkedIn, resume, and a quick message form |
 | `404.html` | Page shown for broken links |
 
 ## Adding your content
 
 ### 1. Email, LinkedIn, location (every page at once)
-Edit **`assets/js/config.js`**. Every email link, LinkedIn link, résumé link and location label on the site reads from this file.
+Edit **`assets/js/config.js`**. Every email link, LinkedIn link, resume link and location label on the site reads from this file.
 
 ### 2. Projects
 Edit **`assets/js/projects.js`**. Each project is one `{ ... }` block. The comments at the top of the file explain every field.
@@ -29,8 +29,8 @@ Edit **`assets/js/projects.js`**. Each project is one `{ ... }` block. The comme
 
 Until a slide has a `src`, it shows a periwinkle placeholder graphic.
 
-### 3. Résumé
-Replace **`assets/files/Emma_Haan_Resume.pdf`** with your real résumé and keep the same file name. Then update the text on `resume.html`.
+### 3. Resume
+Replace **`assets/files/Emma_Haan_Resume.pdf`** with your real resume and keep the same file name. Then update the text on `resume.html`.
 
 ### 4. Text placeholders
 Search the HTML files for `[` or `Placeholder` and replace those with your own words.

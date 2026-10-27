@@ -66,11 +66,8 @@ window.PROJECTS = [
     year: "2025",
     featured: true,
     tagline: "The written portion of the DECA Community Giving Project competition, with its content based on the Murder at Wolf Mansion fundraiser.",
-    blurb: [
-      "This is the written portion of DECA\u2019s Community Giving Project (PMCG), a Project Management event where students use the project management process to raise money or collect donations for a cause or charity. Entries are a written report of no more than 20 numbered pages, which is then presented to a judge. My report documents Murder at Wolf Mansion, a 1920s murder mystery fundraiser for the Parkersburg Historical House, but this project focuses on the planning, analysis and writing behind the event rather than the event itself.",
-      "I wrote the report to follow DECA\u2019s required structure: an executive summary; initiating (the funding need, the lack of community gathering spaces, and the project\u2019s scope and rationale); planning and organizing; execution; monitoring and controlling; closing; a bibliography; and an appendix. Planning and organizing carries most of the business analysis. It includes three project goals, a human resources plan with roles and strengths, a four-milestone schedule, a plan, execute, test and adjust quality cycle with key metrics, a risk plan that pairs each issue with its potential impact and a response, and a $120 budget broken down by expense.",
-      "The later sections show how the plan was tracked and judged: monitoring of the schedule, budget and quality; a controlling framework for correcting problems during the event; an evaluation of results against the original goals; lessons learned for each phase; and recommendations for future projects."
-    ],
+    blurb:
+      "This is the written portion of DECA\u2019s Community Giving Project (PMCG), a Project Management event where students use the project management process to raise money for a cause or charity through a report of up to 20 numbered pages, then present it to a judge. My report documents Murder at Wolf Mansion, a 1920s murder mystery fundraiser for the Parkersburg Historical House, and follows DECA\u2019s required structure from executive summary through closing. It centers on the planning and analysis behind the event: three project goals, a human resources plan, a four-milestone schedule, a quality cycle with key metrics, a risk plan and a $120 budget, followed by monitoring, controlling, an evaluation against the goals, lessons learned and recommendations.",
     results: [
       "Won first place in Iowa",
       "Competed at the International Career Development Conference and placed in the top 10% in Planning and Organizing",
