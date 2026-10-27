@@ -719,9 +719,15 @@ a:hover { color: var(--peri-700); }
 /* 11. Work / project viewer ------------------------------------------------ */
 .project-tabs {
   position: sticky;
-  top: calc(var(--header-h) + 12px);
+  top: var(--header-h);
   z-index: 30;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.75rem;
+  padding-block: 0.75rem;
+  /* Solid backing that runs edge to edge and meets the header, so nothing
+     shows through the strip between the header and the tabs when scrolling */
+  background: var(--bg);
+  box-shadow: 0 0 0 100vmax var(--bg);
+  clip-path: inset(0 -100vmax);
 }
 .tabs-scroller {
   display: flex;
@@ -784,15 +790,31 @@ a:hover { color: var(--peri-700); }
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
 }
-.viewer:fullscreen {
+/* Full screen (class is added by portfolio.js; works in every browser).
+   The stage needs an explicit width here: its slides are absolutely
+   positioned, so as a flex item with auto margins it would collapse to 0. */
+.viewer.is-fullscreen {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 2rem;
+  width: 100%;
+  height: 100%;
+  padding: 1.25rem clamp(1rem, 3vw, 2rem);
+  border: 0;
   border-radius: 0;
   background: var(--ink);
 }
-.viewer:fullscreen .stage { flex: 1; max-height: calc(100vh - 140px); aspect-ratio: auto; }
+.viewer.is-fullscreen .stage {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  max-width: none !important;
+  max-height: none;
+  aspect-ratio: auto;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+}
 
 .stage {
   position: relative;
@@ -812,6 +834,7 @@ a:hover { color: var(--peri-700); }
   position: absolute;
   inset: 0;
   display: grid;
+  grid-template: 100% / 100%;
   place-items: center;
   opacity: 0;
   visibility: hidden;
@@ -862,9 +885,9 @@ a:hover { color: var(--peri-700); }
 .viewer-btn:hover:not(:disabled) { color: #fff; background: var(--peri-600); border-color: var(--peri-600); }
 .viewer-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 .viewer-btn svg { width: 20px; height: 20px; }
-.viewer:fullscreen .viewer-btn { background: rgba(255, 255, 255, 0.1); color: #fff; border-color: rgba(255, 255, 255, 0.25); }
+.viewer.is-fullscreen .viewer-btn { background: rgba(255, 255, 255, 0.1); color: #fff; border-color: rgba(255, 255, 255, 0.25); }
 .viewer-counter { font-size: 0.95rem; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
-.viewer:fullscreen .viewer-counter { color: #fff; }
+.viewer.is-fullscreen .viewer-counter { color: #fff; }
 .viewer-dots { display: flex; flex: 1; justify-content: center; gap: 0.4rem; flex-wrap: wrap; }
 .dot {
   width: 8px;
@@ -887,6 +910,8 @@ a:hover { color: var(--peri-700); }
 @media (min-width: 900px) { .project-body { grid-template-columns: 1.6fr 1fr; } }
 .project-body h3 { font-size: var(--fs-md); margin-bottom: 0.6rem; }
 .project-blurb p { font-size: var(--fs-md); }
+.blurb-text p { margin: 0 0 1rem; }
+.blurb-text p:last-child { margin-bottom: 1.5rem; }
 .results { display: grid; gap: 0.6rem; margin: 0; padding: 0; list-style: none; }
 .results li { display: flex; gap: 0.75rem; align-items: flex-start; }
 .results li::before {

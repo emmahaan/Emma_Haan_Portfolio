@@ -101,7 +101,7 @@
       b.setAttribute("aria-controls", "project-panel");
       b.setAttribute("aria-selected", "false");
       b.tabIndex = -1;
-      b.innerHTML = '<span class="num">' + pad(i + 1) + "</span>" + esc(p.title);
+      b.innerHTML = '<span class="num">' + pad(i + 1) + "</span>" + esc(p.tabTitle || p.title);
       b.addEventListener("click", function () { show(i); });
       tabsWrap.appendChild(b);
       return b;
@@ -116,7 +116,9 @@
       $("[data-meta]", root).innerHTML = "<span>" + esc(p.category) + "</span><span>" + esc(p.year) + "</span>";
       $("[data-title]", root).textContent = p.title;
       $("[data-tagline]", root).textContent = p.tagline || "";
-      $("[data-blurb]", root).textContent = p.blurb || "";
+      // blurb can be one string or an array of paragraphs
+      var paras = Array.isArray(p.blurb) ? p.blurb : [p.blurb || ""];
+      $("[data-blurb]", root).innerHTML = paras.map(function (t) { return "<p>" + esc(t) + "</p>"; }).join("");
 
       var results = $("[data-results]", root);
       results.innerHTML = (p.results || []).map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("");
@@ -274,6 +276,12 @@
 
     // Full-screen presentation mode where the browser supports it.
     if (!(document.fullscreenEnabled || document.webkitFullscreenEnabled)) fullBtn.hidden = true;
+    function syncFullscreen() {
+      var el = document.fullscreenElement || document.webkitFullscreenElement;
+      viewer.classList.toggle("is-fullscreen", el === viewer);
+    }
+    document.addEventListener("fullscreenchange", syncFullscreen);
+    document.addEventListener("webkitfullscreenchange", syncFullscreen);
     fullBtn.addEventListener("click", function () {
       if (document.fullscreenElement || document.webkitFullscreenElement) {
         (document.exitFullscreen || document.webkitExitFullscreen).call(document);

@@ -6,10 +6,12 @@
 
      id           short, unique, no spaces (used in links: portfolio.html#id)
      title        project name (shown above the slides)
+     tabTitle     optional shorter name for the project tab (defaults to title)
      category     e.g. "Social Media Strategy", "Campaign", "Market Research"
      year         e.g. "2026"
      tagline      one sentence: WHAT the project is
      blurb        a short paragraph: the goal, what you did, how you did it
+                  (or a list of paragraphs: blurb: ["First.", "Second."])
      results      bullet list: what it DID (numbers, outcomes, feedback)
      role / client / tools / skills   shown in the details column
      featured     true = appears on the homepage (first 3 are used)
@@ -59,15 +61,19 @@ window.PROJECTS = [
   {
     id: "wolf-mansion",
     title: "DECA Community Giving Project - Murder at Wolf Mansion",
+    tabTitle: "DECA PMCG Project",
     category: "Community Giving Project",
-    year: "2026",
+    year: "2025",
     featured: true,
-    tagline: "A 1920s interactive murder mystery fundraiser that brought local history to life at the Parkersburg Historical House.",
-    blurb:
-      "Murder at Wolf Mansion was a 1920s-themed murder mystery event, created with teammate Ellie Reints, to raise money for the upkeep and restoration of the Parkersburg Historical House and give the community a place to connect. I wrote the script, clues and character bios, produced the event and directed the cast of student and volunteer actors, while managing the schedule, budget, ticket sales and marketing. The full project is documented in a 20-page report that follows each project management phase: initiating, planning, execution, monitoring and closing.",
+    tagline: "The written portion of the DECA Community Giving Project competition, with its content based on the Murder at Wolf Mansion fundraiser.",
+    blurb: [
+      "This is the written portion of DECA\u2019s Community Giving Project (PMCG), a Project Management event where students use the project management process to raise money or collect donations for a cause or charity. Entries are a written report of no more than 20 numbered pages, which is then presented to a judge. My report documents Murder at Wolf Mansion, a 1920s murder mystery fundraiser for the Parkersburg Historical House, but this project focuses on the planning, analysis and writing behind the event rather than the event itself.",
+      "I wrote the report to follow DECA\u2019s required structure: an executive summary; initiating (the funding need, the lack of community gathering spaces, and the project\u2019s scope and rationale); planning and organizing; execution; monitoring and controlling; closing; a bibliography; and an appendix. Planning and organizing carries most of the business analysis. It includes three project goals, a human resources plan with roles and strengths, a four-milestone schedule, a plan, execute, test and adjust quality cycle with key metrics, a risk plan that pairs each issue with its potential impact and a response, and a $120 budget broken down by expense.",
+      "The later sections show how the plan was tracked and judged: monitoring of the schedule, budget and quality; a controlling framework for correcting problems during the event; an evaluation of results against the original goals; lessons learned for each phase; and recommendations for future projects."
+    ],
     results: [
       "Won first place in Iowa",
-      "Competed at nationals and placed in the top 10% in Planning and Organizing",
+      "Competed at the International Career Development Conference and placed in the top 10% in Planning and Organizing",
       "Featured on the front page of local newspapers"
     ],
     role: "Director, Writer & Producer",
