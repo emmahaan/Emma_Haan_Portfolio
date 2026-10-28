@@ -11,5 +11,5 @@ window.SITE = {
   linkedinLabel: "linkedin.com/in/your-profile",         // TODO: how the link should read
   resume: "assets/files/Emma_Haan_Resume.pdf",           // replace the PDF at this path
   location: "City, State",                               // TODO
-  availability: "Open to marketing internships & entry-level roles" // TODO
+  availability: "Open to Writing, Event Planning or Media-Related roles"
 };
