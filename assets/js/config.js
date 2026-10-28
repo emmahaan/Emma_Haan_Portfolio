@@ -6,9 +6,9 @@
    ========================================================================== */
 window.SITE = {
   name: "Emma Haan",
-  email: "emma.haan@example.com",                       // TODO: your real email
-  linkedin: "https://www.linkedin.com/in/your-profile",  // TODO: your LinkedIn URL
-  linkedinLabel: "linkedin.com/in/your-profile",         // TODO: how the link should read
+  email: "emma.haan2530@gmail.com",
+  linkedin: "https://www.linkedin.com/in/emma-haan-779314435/",
+  linkedinLabel: "linkedin.com/in/emma-haan-779314435",
   resume: "assets/files/Emma_Haan_Resume.pdf",           // replace the PDF at this path
   location: "City, State",                               // TODO
   availability: "Open to Writing, Event Planning or Media-Related roles"
