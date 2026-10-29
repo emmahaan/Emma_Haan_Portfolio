@@ -146,19 +146,59 @@
     });
   }
 
-  /* ---- Contact form → opens the visitor's email app ---------------------- */
+  /* ---- Contact form → delivers the message to Emma's inbox ---------------
+     Uses FormSubmit (formsubmit.co), a free form-to-email service, so the page
+     can send mail without a server. */
   function initContactForm() {
-    var form = $("[data-mailto-form]");
+    var form = $("[data-contact-form]");
     if (!form) return;
+    var status = $("[data-form-status]", form);
+    var button = $("button[type=submit]", form);
+    var idleText = status ? status.textContent : "";
+
+    function say(msg, isError) {
+      if (!status) return;
+      status.textContent = msg;
+      status.style.color = isError ? "#b3261e" : "";
+    }
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
       var d = new FormData(form);
-      var subject = d.get("topic") + " — from " + (d.get("name") || "your portfolio");
-      var body = (d.get("message") || "") +
-        "\n\n" + (d.get("name") || "") +
-        (d.get("company") ? ", " + d.get("company") : "") +
-        (d.get("email") ? "\n" + d.get("email") : "");
-      location.href = "mailto:" + SITE.email + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+      if (d.get("_honey")) return; // spam trap
+      var name = d.get("name") || "your portfolio";
+      var payload = {
+        name: d.get("name"),
+        company: d.get("company") || "(not given)",
+        email: d.get("email"),
+        topic: d.get("topic"),
+        message: d.get("message"),
+        _subject: d.get("topic") + " \u2014 from " + name,
+        _replyto: d.get("email"),
+        _template: "table",
+        _captcha: "false"
+      };
+      button.disabled = true;
+      say("Sending\u2026", false);
+      fetch("https://formsubmit.co/ajax/" + encodeURIComponent(SITE.email), {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify(payload)
+      }).then(function (r) { return r.json(); }).then(function (res) {
+        if (res && (res.success === true || res.success === "true")) {
+          form.reset();
+          say("Thank you! Your message was sent. I'll reply soon.", false);
+          toast("Message sent");
+        } else {
+          throw new Error((res && res.message) || "send failed");
+        }
+      }).catch(function () {
+        say("Sorry, that didn't send. Please email me directly at " + SITE.email + ".", true);
+      }).then(function () {
+        button.disabled = false;
+        setTimeout(function () { if (status && status.textContent.indexOf("Thank you") === 0) say(idleText, false); }, 8000);
+      });
     });
   }
 

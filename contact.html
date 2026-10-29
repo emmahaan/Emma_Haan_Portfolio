@@ -55,7 +55,6 @@
       <div class="container">
         <p class="label">Contact</p>
         <h1>Let’s connect</h1>
-        <p class="lead">Recruiters, hiring managers and collaborators: email is the quickest way to reach me. I usually reply within one business day.</p>
       </div>
     </section>
 
@@ -66,7 +65,7 @@
           <h2>Email</h2>
           <p class="value"><a href="mailto:emma.haan2530@gmail.com" data-site="email" data-site-text>emma.haan2530@gmail.com</a></p>
           <div class="actions">
-            <a class="btn btn-small" href="mailto:emma.haan2530@gmail.com" data-site="email">Send email</a>
+            <a class="btn btn-small" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=emma.haan2530@gmail.com" target="_blank" rel="noopener" data-gmail-compose>Send email</a>
             <button class="btn btn-small btn-outline" type="button" data-copy="email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></svg> Copy</button>
           </div>
         </div>
@@ -92,27 +91,27 @@
           <h2>Details</h2>
           <ul class="info-list">
             <li><span>Location</span><strong data-site="location">City, State</strong></li>
-            <li><span>Looking for</span><strong>[Internships · Full-time roles]</strong></li>
-            <li><span>Available</span><strong>[Month Year]</strong></li>
-            <li><span>Work style</span><strong>[On-site · Hybrid · Remote]</strong></li>
+            <li><span>Looking for</span><strong>Internships or volunteer opportunities</strong></li>
+            <li><span>Available</span><strong>Summer 2027</strong></li>
           </ul>
         </div>
-        <form class="card form" data-mailto-form data-reveal style="--i:1">
+        <form class="card form" data-contact-form data-reveal style="--i:1">
           <h2 style="font-size:var(--fs-xl);margin:0">Send a quick message</h2>
           <div class="form-row">
-            <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" autocomplete="name"></div>
+            <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
             <div class="field"><label for="f-company">Company <span style="font-weight:400;color:var(--muted)">(optional)</span></label><input id="f-company" name="company" type="text" autocomplete="organization"></div>
           </div>
           <div class="form-row">
-            <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email"></div>
+            <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
             <div class="field"><label for="f-topic">Topic</label>
               <select id="f-topic" name="topic"><option>Job opportunity</option><option>Internship</option><option>Project</option><option>Just saying hi</option></select>
             </div>
           </div>
-          <div class="field"><label for="f-message">Message</label><textarea id="f-message" name="message" rows="5"></textarea></div>
+          <div class="field"><label for="f-message">Message</label><textarea id="f-message" name="message" rows="5" required></textarea></div>
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
           <div class="btn-row" style="align-items:center">
             <button class="btn" type="submit">Send message <svg class="i-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-            <p class="form-note">Opens your email app with the message filled in.</p>
+            <p class="form-note" role="status" aria-live="polite" data-form-status>Your message goes straight to my inbox.</p>
           </div>
         </form>
       </div>

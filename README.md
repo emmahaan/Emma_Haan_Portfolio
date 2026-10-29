@@ -10,7 +10,7 @@ A static GitHub Pages site built with plain HTML, CSS and JavaScript. It has no 
 | `about.html` | About Me: photo as the focal point, background, aspirations, strengths, experience highlights, tools |
 | `portfolio.html` | Work: a project switcher and a slide viewer for each project, with the title above and the blurb below |
 | `resume.html` | Not used: sends visitors to the Contact page (the resume is shared by email only) |
-| `contact.html` | Contact: email (with a copy button), LinkedIn, a resume request link, and a quick message form |
+| `contact.html` | Contact: email (with a copy button), LinkedIn, a resume request link, and a quick message form that emails her through FormSubmit |
 | `404.html` | Page shown for broken links |
 
 ## Adding your content
