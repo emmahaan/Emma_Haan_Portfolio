@@ -647,11 +647,12 @@ a:hover { color: var(--peri-700); }
 .story { display: grid; gap: 1.25rem; }
 .story .card h3 { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
 .story .card h3 .icon-box { margin: 0; width: 38px; height: 38px; }
+.story .card p { max-width: 80ch; }
 .story .card p:last-child { margin-bottom: 0; }
 
 .strength-grid { display: grid; gap: 1.25rem; grid-template-columns: 1fr; }
 @media (min-width: 640px) { .strength-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 1000px) { .strength-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1000px) { .strength-grid { grid-template-columns: repeat(4, 1fr); } }
 .strength-grid h3 { font-size: var(--fs-md); margin-bottom: 0.4rem; }
 .strength-grid p { margin: 0; font-size: 0.95rem; }
 

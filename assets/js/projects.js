@@ -65,9 +65,9 @@ window.PROJECTS = [
     category: "Community Giving Project",
     year: "2025",
     featured: true,
-    tagline: "The written portion of the DECA Community Giving Project competition, with its content based on the Murder at Wolf Mansion fundraiser.",
+    tagline: "The written portion of the DECA Community Giving Project competition, with its content based on the Murder at Wolf Mansion© fundraiser.",
     blurb:
-      "This is the written portion of DECA\u2019s Community Giving Project (PMCG), a Project Management event where students use the project management process to raise money for a cause or charity through a report of up to 20 numbered pages, then present it to a judge. My report documents Murder at Wolf Mansion, a 1920s murder mystery fundraiser for the Parkersburg Historical House, and follows DECA\u2019s required structure from executive summary through closing. It centers on the planning and analysis behind the event: three project goals, a human resources plan, a four-milestone schedule, a quality cycle with key metrics, a risk plan and a $120 budget, followed by monitoring, controlling, an evaluation against the goals, lessons learned and recommendations.",
+      "This is the written portion of DECA\u2019s Community Giving Project (PMCG), a Project Management event where students use the project management process to raise money for a cause or charity through a report of up to 20 numbered pages, then present it to a judge. My report documents Murder at Wolf Mansion©, a 1920s murder mystery fundraiser for the Parkersburg Historical House, and follows DECA\u2019s required structure from executive summary through closing. It centers on the planning and analysis behind the event: three project goals, a human resources plan, a four-milestone schedule, a quality cycle with key metrics, a risk plan and a $120 budget, followed by monitoring, controlling, an evaluation against the goals, lessons learned and recommendations.",
     results: [
       "Won first place in Iowa",
       "Competed at the International Career Development Conference and placed in the top 10% in Planning and Organizing",

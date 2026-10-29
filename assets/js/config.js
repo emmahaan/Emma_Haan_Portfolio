@@ -10,6 +10,6 @@ window.SITE = {
   linkedin: "https://www.linkedin.com/in/emma-haan-779314435/",
   linkedinLabel: "linkedin.com/in/emma-haan-779314435",
   resumeRequest: "mailto:emma.haan2530@gmail.com?subject=Resume%20request", // resume is shared by email only
-  location: "City, State",                               // TODO
+  location: "Ames, Iowa",
   availability: "Open to Writing, Event Planning or Media-Related roles"
 };
