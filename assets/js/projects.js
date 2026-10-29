@@ -148,22 +148,33 @@ window.PROJECTS = [
     ]
   },
   {
-    id: "content-series",
-    title: "Project Title Five",
-    category: "Content Creation",
-    year: "2024",
-    tagline: "A series of Instagram posts and short videos for [brand / event].",
-    blurb: "Placeholder. The idea behind the series and how you kept it consistent and on-brand.",
-    results: ["Reach or views", "Engagement", "What you learned"],
-    role: "Content Creator",
-    client: "Client / Personal",
-    tools: ["Canva", "CapCut", "Instagram"],
-    skills: ["Short-form video", "Copywriting"],
-    aspect: "1 / 1",
+    id: "murder-mystery",
+    title: "Murder at Wolf Mansion\u00A9",
+    category: "Murder Mystery Event",
+    year: "2025",
+    tagline: "A 1920s interactive murder mystery based on real events and real people, where guests search the house for clues and question the characters.",
+    blurb:
+      "Murder at Wolf Mansion\u00A9 is a 1920s murder mystery based on real events and real characters from Parkersburg\u2019s history. Actors played historical figures while guests walked around the house looking for clues, talking to the characters and working together to solve the mystery. The slides give a taste of the writing behind it: a few of the clues guests hunted for, followed by the character bios the actors used in Rounds 1, 2 and 3, which spelled out what each character thought of the others and which clues they knew.",
+    results: [
+      "All 50 guests attended",
+      "Guests gave overwhelmingly positive feedback and hoped for more events like it",
+      "Raised ticket sales and donations for the historical house"
+    ],
+    role: "Director, Writer & Producer",
+    client: "Parkersburg Historical Society",
+    skills: ["Creating Stories", "Event Planning", "Event Directing", "Marketing", "Sales"],
+    cover: "assets/img/projects/murder-mystery/cover.jpg",
+    aspect: "17 / 22",
     slides: [
-      { src: "", alt: "Post one" },
-      { src: "", alt: "Post two" },
-      { src: "", alt: "Post three" }
+      { src: "assets/img/projects/murder-mystery/01.jpg", alt: "Clue 3: the last will and testament of Charles C. Wolf" },
+      { src: "assets/img/projects/murder-mystery/02.jpg", alt: "Clue 5: a floor plan of the Wolf Mansion with room names and sizes" },
+      { src: "assets/img/projects/murder-mystery/03.jpg", alt: "Clue 10: a newspaper-style call to the community to help rebuild the church" },
+      { src: "assets/img/projects/murder-mystery/04.jpg", alt: "Round 1 bio for Sarah Wolf, page 1: her family, and what she thinks of the other characters" },
+      { src: "assets/img/projects/murder-mystery/05.jpg", alt: "Round 1 bio for Sarah Wolf, page 2: what she thinks of the other characters and the clues she knows" },
+      { src: "assets/img/projects/murder-mystery/06.jpg", alt: "Round 2 bio for Elma Parker, page 1: her role and what she thinks of other characters" },
+      { src: "assets/img/projects/murder-mystery/07.jpg", alt: "Round 2 bio for Elma Parker, page 2: the clues Elma knows" },
+      { src: "assets/img/projects/murder-mystery/08.jpg", alt: "Round 3 bio for Mary Wolf, page 1: her role and what she thinks of other characters" },
+      { src: "assets/img/projects/murder-mystery/09.jpg", alt: "Round 3 bio for Mary Wolf, page 2: the clues Mary knows about" }
     ]
   }
 ];
