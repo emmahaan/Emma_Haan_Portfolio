@@ -86,6 +86,8 @@
     var counter = $(".viewer-counter", root);
     var fullBtn = $("[data-fullscreen]", root);
     var openPdf = $("[data-open-pdf]", root);
+    var controlsEl = $(".viewer-controls", root);
+    var hintEl = $(".hint", root);
     var status = $("[data-slide-status]", root);
 
     var current = -1;
@@ -94,6 +96,7 @@
     var dotEls = [];
     var aspects = [];
     var baseAspect = "16 / 9";
+    var embedOnly = false; // a single hosted video: no slideshow controls, tip or full-screen button
 
     var tabs = PROJECTS.map(function (p, i) {
       var b = document.createElement("button");
@@ -120,6 +123,7 @@
 
     function fill(p) {
       baseAspect = p.aspect;
+      embedOnly = !!(p.slides && p.slides.length && p.slides.every(function (sd) { return sd.embed; }));
       aspects = (p.slides || []).map(function (sd) { return sd.aspect || p.aspect; });
       setAspect(p.aspect);
 
@@ -208,6 +212,10 @@
       dotEls.forEach(function (d, n) { d.setAttribute("aria-current", n === slide ? "true" : "false"); });
 
       var single = stage.getAttribute("data-mode") === "pdf" || total < 2;
+      var fsOk = !!(document.fullscreenEnabled || document.webkitFullscreenEnabled);
+      controlsEl.hidden = embedOnly;
+      if (hintEl) hintEl.hidden = embedOnly;
+      fullBtn.hidden = embedOnly || !fsOk;
       prevBtn.hidden = nextBtn.hidden = counter.hidden = dots.hidden = single;
       prevBtn.disabled = slide === 0;
       nextBtn.disabled = slide >= total - 1;
