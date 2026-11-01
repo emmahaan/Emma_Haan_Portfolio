@@ -127,7 +127,7 @@
       aspects = (p.slides || []).map(function (sd) { return sd.aspect || p.aspect; });
       setAspect(p.aspect);
 
-      $("[data-meta]", root).innerHTML = "<span>" + esc(p.category) + "</span><span>" + esc(p.year) + "</span>";
+      $("[data-meta]", root).innerHTML = "<span>" + esc(p.category) + "</span>" + (p.year ? "<span>" + esc(p.year) + "</span>" : "");
       $("[data-title]", root).textContent = p.title;
       $("[data-tagline]", root).textContent = p.tagline || "";
       // blurb can be one string or an array of paragraphs

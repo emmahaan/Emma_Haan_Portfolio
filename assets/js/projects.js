@@ -36,29 +36,38 @@
    ========================================================================== */
 window.PROJECTS = [
   {
-    id: "social-campaign",
-    title: "Project Title One",
-    category: "Social Media Campaign",
-    year: "2026",
+    id: "hemingways-in-town",
+    title: "Murder at Wolf Mansion: Hemingway\u2019s in Town\u00A9",
+    category: "Murder Mystery Event",
     featured: true,
-    tagline: "A [platform] campaign to grow awareness for [brand / organization] among [audience].",
-    blurb:
-      "Placeholder. Explain the goal in one sentence, then what you planned and created, and why your approach fit the audience. Keep it short enough to read in 20 seconds.",
-    results: [
-      "Result with a number, e.g. grew followers 35% in 6 weeks",
-      "Result with a number, e.g. 4.8% average engagement rate",
-      "Feedback or recognition received"
+    tagline: "A 1920s murder mystery dinner and the direct sequel to Murder at Wolf Mansion\u00A9, featuring real historical figures, new characters and new clues.",
+    blurb: [
+      "Murder at Wolf Mansion: Hemingway\u2019s in Town\u00A9 is my second murder mystery and the direct sequel to Murder at Wolf Mansion\u00A9. Ernest Hemingway comes to Parkersburg with his second wife, Pauline Pfeiffer, a Parkersburg native. His first wife, Hadley Richardson, turns up too, along with F. Scott Fitzgerald and many other characters based on real historical figures. Guests walk through the historic house collecting clues, questioning the actors and working to solve the mystery.",
+      "I wrote the story, clues and character bios, directed the actors, produced the event and led its marketing. As with the first mystery, it was a fundraiser for the Parkersburg Historical Society."
     ],
-    role: "Social Media Strategist",
-    client: "Client / Course name",
-    tools: ["Canva", "Meta Business Suite", "Later"],
-    skills: ["Content calendar", "Copywriting", "Analytics"],
-    aspect: "16 / 9",
+    results: [
+      "Raised over $5,000 for the Parkersburg Historical Society",
+      "Grew the Historical Society\u2019s Facebook page from 1,264 to 3,047 followers, a gain of 1,783 followers (about 141%)",
+      "Received many positive comments from the community",
+      "Word about the event and the historic house spread widely online"
+    ],
+    role: "Writer, Director & Producer",
+    client: "Parkersburg Historical Society",
+    skills: ["Storyboarding", "Event Management", "Cast & Team Leadership", "Marketing Direction (promotion and social media)"],
+    cover: "assets/img/projects/hemingways/cover.jpg",
+    aspect: "17 / 22",
     slides: [
-      { src: "", alt: "Campaign overview", caption: "Overview" },
-      { src: "", alt: "Audience research" },
-      { src: "", alt: "Content examples" },
-      { src: "", alt: "Results dashboard" }
+      { src: "assets/img/projects/hemingways/cover.jpg", alt: "Collage from Murder at Wolf Mansion: Hemingway\u2019s in Town: actors in 1920s costume, a torn marriage certificate clue, a mannequin victim, dinner guests and an old photo of the Parkersburg mansion", aspect: "16 / 9" },
+      { src: "assets/img/projects/hemingways/01.jpg", alt: "Opening ceremony script, page 1: Mary Wolf welcomes the guests and introduces Paul Pfeiffer, his daughter Pauline and Ernest Hemingway" },
+      { src: "assets/img/projects/hemingways/02.jpg", alt: "Opening ceremony script, page 2: Mary Wolf introduces F. Scott Fitzgerald, Mabel Crane and Leon Knox" },
+      { src: "assets/img/projects/hemingways/03.jpg", alt: "Opening ceremony script, page 3: Hadley Richardson, Ida Finch and Lavinia Vale join the scene" },
+      { src: "assets/img/projects/hemingways/04.jpg", alt: "Round 2 clue: comparative writing drafts by F. Scott Fitzgerald and Ernest Hemingway" },
+      { src: "assets/img/projects/hemingways/05.jpg", alt: "Round 2 clue: forensic science report on stab and cutting injuries, with a knife wound" },
+      { src: "assets/img/projects/hemingways/06.jpg", alt: "Round 2 clue: forensic report pages on letter opener and scissors wounds" },
+      { src: "assets/img/projects/hemingways/07.jpg", alt: "Round 1 character bios, page 1: how one character feels about Hemingway, Pauline Pfeiffer, Fitzgerald and others, plus the Round 1 clue letter" },
+      { src: "assets/img/projects/hemingways/08.jpg", alt: "Round 1 character bio for Ida Finch, the maid of Wolf Manor" },
+      { src: "assets/img/projects/hemingways/09.jpg", alt: "Round 2 script and bio for Pauline Pfeiffer" },
+      { src: "assets/img/projects/hemingways/10.jpg", alt: "Round 3 script and bio for Paul Pfeiffer" }
     ]
   },
   {
