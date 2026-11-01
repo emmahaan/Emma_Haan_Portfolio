@@ -47,7 +47,8 @@
   function coverFor(p) {
     var first = p.slides && p.slides[0];
     var src = p.cover || (first && !isVideo(first.src) ? first.src : "");
-    return src ? '<img src="' + esc(src) + '" alt="" loading="lazy">' : placeholder("", "16 / 10");
+    var fb = p.coverFallback ? ' onerror="this.onerror=null;this.src=\'' + esc(p.coverFallback) + '\'"' : "";
+    return src ? '<img src="' + esc(src) + '" alt="" loading="lazy"' + fb + ">" : placeholder("", "16 / 10");
   }
 
   /* ---- Homepage: featured work ------------------------------------------ */
@@ -169,7 +170,10 @@
           s.setAttribute("aria-roledescription", "slide");
           s.setAttribute("aria-label", (n + 1) + " of " + p.slides.length);
           var media;
-          if (sd.src && isVideo(sd.src)) {
+          if (sd.embed) {
+            // Hosted video (YouTube/Vimeo): plays in an embedded player
+            media = '<iframe src="' + esc(sd.embed) + '" title="' + esc(sd.alt || p.title) + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" loading="lazy"></iframe>';
+          } else if (sd.src && isVideo(sd.src)) {
             media = '<video src="' + esc(sd.src) + '" controls playsinline preload="metadata" aria-label="' + esc(sd.alt || "") + '"></video>';
           } else if (sd.src) {
             media = '<img src="' + esc(sd.src) + '" alt="' + esc(sd.alt || "") + '" draggable="false"' + (n > 1 ? ' loading="lazy"' : "") + ">";

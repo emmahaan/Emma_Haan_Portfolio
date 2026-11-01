@@ -15,6 +15,8 @@
      results      bullet list: what it DID (numbers, outcomes, feedback)
      role / client / tools / skills   shown in the details column
      featured     true = appears on the homepage (first 3 are used)
+     slides[].embed   a hosted video, e.g. { embed: "https://www.youtube-nocookie.com/embed/VIDEO_ID?rel=0" }
+     coverFallback    optional backup image if the cover fails to load
      slides[].aspect  optional: give one slide its own shape (e.g. a wide cover on a portrait deck)
      cover        optional image for the homepage card (defaults to slide 1)
      aspect       slide shape: "16 / 9" (default, matches PowerPoint/Canva
@@ -105,28 +107,26 @@ window.PROJECTS = [
     ]
   },
   {
-    id: "brand-refresh",
-    title: "Project Title Three",
-    category: "Branding",
-    year: "2025",
+    id: "stolen",
+    title: "Stolen",
+    category: "Short Film",
+    year: "2026",
     featured: true,
-    tagline: "A brand refresh for [organization]: logo, colors, voice and templates.",
+    tagline: "A short film where a group of friends go on a mission to get back what was stolen from them.",
     blurb:
-      "Placeholder. What wasn't working with the old brand, what you changed and how the new look supports the organization's goals.",
+      "Stolen is a student-made short film that I wrote, helped direct and acted in. Lennon calls his friends together to tell them that something was stolen from him, and according to Lennon it is sitting in a girl named Lisa\u2019s house. The group sets out on a mission to break in and take it back. As head writer I wrote the script, shaping the story and characters, and I worked with the cast as a director while also performing on screen.",
     results: [
-      "What it did, e.g. templates now used for every event post",
-      "Measurable outcome",
-      "Skill this project shows"
+      "Received the highest rating at two film contests",
+      "Received all-state recognition from the Iowa High School Speech Association"
     ],
-    role: "Designer & Marketing Lead",
-    client: "Student organization",
-    tools: ["Canva", "Adobe Illustrator"],
-    skills: ["Brand guidelines", "Visual identity"],
+    role: "Head Writer, Director & Actor",
+    client: "Aplington-Parkersburg Speech Team",
+    skills: ["Scriptwriting", "Leadership", "Managing Actors", "Storyboarding"],
+    cover: "https://i.ytimg.com/vi/ekTW2sTzFkQ/maxresdefault.jpg",
+    coverFallback: "https://i.ytimg.com/vi/ekTW2sTzFkQ/hqdefault.jpg",
     aspect: "16 / 9",
     slides: [
-      { src: "", alt: "Brand board" },
-      { src: "", alt: "Before and after" },
-      { src: "", alt: "Templates in use" }
+      { embed: "https://www.youtube-nocookie.com/embed/ekTW2sTzFkQ?rel=0", alt: "Stolen, a student short film written by Emma Haan" }
     ]
   },
   {
