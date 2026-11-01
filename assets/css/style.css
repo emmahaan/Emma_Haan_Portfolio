@@ -626,9 +626,9 @@ a:hover { color: var(--peri-700); }
 .about-photo img {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 2 / 3;
   object-fit: cover;
-  object-position: 35% 25%;
+  object-position: 50% 30%;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow);
 }
