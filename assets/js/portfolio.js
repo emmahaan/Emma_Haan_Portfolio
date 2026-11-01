@@ -91,6 +91,8 @@
     var slide = 0;
     var slides = [];
     var dotEls = [];
+    var aspects = [];
+    var baseAspect = "16 / 9";
 
     var tabs = PROJECTS.map(function (p, i) {
       var b = document.createElement("button");
@@ -107,11 +109,18 @@
       return b;
     });
 
-    function fill(p) {
-      var r = ratio(p.aspect);
+    // Sets the stage shape. A slide can override the project's shape with its own `aspect`.
+    function setAspect(a) {
+      var r = ratio(a);
       stage.style.setProperty("--aspect", r.css);
       // Keep tall formats from running off the screen.
       stage.style.maxWidth = "calc(75vh * " + r.value.toFixed(4) + ")";
+    }
+
+    function fill(p) {
+      baseAspect = p.aspect;
+      aspects = (p.slides || []).map(function (sd) { return sd.aspect || p.aspect; });
+      setAspect(p.aspect);
 
       $("[data-meta]", root).innerHTML = "<span>" + esc(p.category) + "</span><span>" + esc(p.year) + "</span>";
       $("[data-title]", root).textContent = p.title;
@@ -185,6 +194,7 @@
 
     function update() {
       var total = slides.length;
+      setAspect(aspects[slide] || baseAspect);
       slides.forEach(function (s, n) {
         s.setAttribute("data-state", n === slide ? "active" : n < slide ? "before" : "after");
         s.setAttribute("aria-hidden", n === slide ? "false" : "true");

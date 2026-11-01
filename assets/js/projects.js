@@ -15,6 +15,7 @@
      results      bullet list: what it DID (numbers, outcomes, feedback)
      role / client / tools / skills   shown in the details column
      featured     true = appears on the homepage (first 3 are used)
+     slides[].aspect  optional: give one slide its own shape (e.g. a wide cover on a portrait deck)
      cover        optional image for the homepage card (defaults to slide 1)
      aspect       slide shape: "16 / 9" (default, matches PowerPoint/Canva
                   decks), "4 / 3", "1 / 1" (Instagram posts), "4 / 5", "9 / 16"
@@ -151,10 +152,10 @@ window.PROJECTS = [
     id: "murder-mystery",
     title: "Murder at Wolf Mansion\u00A9",
     category: "Murder Mystery Event",
-    year: "2025",
+    year: "2024",
     tagline: "A 1920s interactive murder mystery based on real events and real people, where guests search the house for clues and question the characters.",
     blurb:
-      "Murder at Wolf Mansion\u00A9 is a 1920s murder mystery based on real events and real characters from Parkersburg\u2019s history. Actors played historical figures while guests walked around the house looking for clues, talking to the characters and working together to solve the mystery. The slides give a taste of the writing behind it: a few of the clues guests hunted for, followed by the character bios the actors used in Rounds 1, 2 and 3, which spelled out what each character thought of the others and which clues they knew.",
+      "Murder at Wolf Mansion\u00A9 is a 1920s murder mystery based on real events and real characters from Parkersburg\u2019s history. Actors played historical figures while guests walked around the house looking for clues, talking to the characters and working together to solve the mystery. The slides open with photos from the night, then give a taste of the writing behind it: a few of the clues guests hunted for, followed by the character bios the actors used in Rounds 1, 2 and 3, which spelled out what each character thought of the others and which clues they knew.",
     results: [
       "All 50 guests attended",
       "Guests gave overwhelmingly positive feedback and hoped for more events like it",
@@ -166,6 +167,7 @@ window.PROJECTS = [
     cover: "assets/img/projects/murder-mystery/cover.jpg",
     aspect: "17 / 22",
     slides: [
+      { src: "assets/img/projects/murder-mystery/cover.jpg", alt: "Collage of photos from the Murder at Wolf Mansion event: guests in 1920s costume reading clues, talking with characters and gathering in the historic house", aspect: "16 / 9" },
       { src: "assets/img/projects/murder-mystery/01.jpg", alt: "Clue 3: the last will and testament of Charles C. Wolf" },
       { src: "assets/img/projects/murder-mystery/02.jpg", alt: "Clue 5: a floor plan of the Wolf Mansion with room names and sizes" },
       { src: "assets/img/projects/murder-mystery/03.jpg", alt: "Clue 10: a newspaper-style call to the community to help rebuild the church" },
