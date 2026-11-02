@@ -144,6 +144,7 @@ window.PROJECTS = [
     id: "ffa-mystery",
     title: "Murder at the FFA Banquet",
     category: "Murder Mystery Event",
+    year: "2026",
     tagline: "An original dinner-style murder mystery for a local FFA chapter, where every guest played a role and had clues to reveal.",
     blurb:
       "Murder at the FFA Banquet is a dinner-style murder mystery that I wrote, directed and produced for a local FFA chapter. Guests sat at tables and were given a role based on their seat, then talked within their table to solve the case. Every person had their own clues to reveal and dialogue lines to deliver. The FFA officer team played the suspects, and our advisor and teacher played the person who got killed. The slides show a few of the clues guests worked with, followed by two of the character information sheets that told each role who they were and how to act during the game.",
@@ -154,10 +155,13 @@ window.PROJECTS = [
     role: "Writer, Director & Producer",
     client: "Aplington-Parkersburg FFA Chapter",
     skills: ["Creating Stories", "Event Planning", "Directing", "Clue Design"],
+    cover: "assets/img/projects/ffa-mystery/cover.jpg",
     aspect: "17 / 22",
     slides: [
-      { src: "assets/img/projects/ffa-mystery/clue-25.jpg", alt: "Example clue: Butler County EMS incident summary", label: "Examples clues" },
+      { src: "assets/img/projects/ffa-mystery/cover.jpg", alt: "Collage of photos from the Murder at the FFA Banquet: guests at dinner tables comparing clues, the FFA officer team who played the suspects, and an officer speaking at the podium", aspect: "16 / 9" },
       { src: "assets/img/projects/ffa-mystery/clue-21.jpg", alt: "Example clue: internship application", label: "Examples clues" },
+      { src: "assets/img/projects/ffa-mystery/clue-23.jpg", alt: "Example clue: judge scoring rubric from a District FFA Public Speaking contest", label: "Examples clues" },
+      { src: "assets/img/projects/ffa-mystery/clue-25.jpg", alt: "Example clue: Butler County EMS incident summary", label: "Examples clues" },
       { src: "assets/img/projects/ffa-mystery/clue-27.jpg", alt: "Example clue: text message conversation", label: "Examples clues" },
       { src: "assets/img/projects/ffa-mystery/clue-33.jpg", alt: "Example clue: sample chemical analysis report", label: "Examples clues" },
       { src: "assets/img/projects/ffa-mystery/sibling-1.jpg", alt: "Character information example: Little Sibling, page 1", label: "Character Information Example" },
