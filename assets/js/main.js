@@ -342,17 +342,23 @@
       }
       var H = main.offsetHeight, rand = rng(11), y = 220;
 
-      while (y < H - 300) {
+      while (y < H - 120) {
         var D = 150 + rand() * 220;                 // height of this arc
+        if (y + D > H - 10) D = Math.max(110, H - 10 - y);   // the last arc finishes at the bottom of the page
         var scale = 0.65 + rand() * 0.6;            // each arc has its own print size
         var spacing = (38 + rand() * 48) * scale;   // ...and its own walking pace
         var t0 = -Math.PI / 2 + (rand() < 0.35 ? rand() * 0.55 : 0);
         var t1 = Math.PI / 2 - (rand() < 0.35 ? rand() * 0.55 : 0);
         var reverse = rand() < 0.4;
-        var gap = 130 + rand() * 360;
+        var gap = 30 + rand() * 150;
         var x0 = 8 + 14 * scale;                   // arcs start near the screen edge
-        var bulge = Math.min(D * 0.45, limitFor(y - 10, y + D + 10) - x0 - 18 * scale);
-        if (bulge < 5) { y += 60; continue; }      // no room beside this part of the page: try further down
+        var room = limitFor(y - 10, y + D + 10);
+        var bulge = Math.min(D * 0.45, room - x0 - 18 * scale);
+        if (bulge < 5) {                            // tight on room: use the smallest print size, which still fits the page
+          scale = 0.65; spacing = (38 + rand() * 48) * scale; x0 = 8 + 14 * scale;
+          bulge = Math.min(D * 0.45, room - x0 - 18 * scale);
+        }
+        if (bulge < 5) { y += 50; continue; }       // really no room beside this part of the page: try further down
         var cy = y + D / 2;
         var pts = [];
         for (var k = 0; k <= 90; k++) {
