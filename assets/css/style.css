@@ -883,6 +883,18 @@ a:hover { color: var(--peri-700); }
 }
 .pdf-open { position: absolute; right: 0.75rem; top: 0.75rem; z-index: 2; }
 
+/* Caption in the top-left corner of the viewer: says what the slide is */
+.viewer-label {
+  margin: 0 0 0.7rem;
+  min-height: 1.5em;
+  font-size: var(--fs-md, 1.05rem);
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.viewer-label.is-empty { visibility: hidden; }
+.viewer.is-fullscreen .viewer-label { flex: none; color: #fff; margin-bottom: 0.5rem; }
+
 .viewer-controls {
   display: flex;
   align-items: center;

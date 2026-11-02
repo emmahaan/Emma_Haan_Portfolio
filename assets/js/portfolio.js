@@ -87,6 +87,7 @@
     var fullBtn = $("[data-fullscreen]", root);
     var openPdf = $("[data-open-pdf]", root);
     var controlsEl = $(".viewer-controls", root);
+    var labelEl = $("[data-label]", root);
     var hintEl = $(".hint", root);
     var status = $("[data-slide-status]", root);
 
@@ -95,7 +96,9 @@
     var slides = [];
     var dotEls = [];
     var aspects = [];
+    var slideData = [];
     var baseAspect = "16 / 9";
+    var hasLabels = false; // any slide has a label shown in the top-left corner of the viewer
     var embedOnly = false; // a single hosted video: no slideshow controls, tip or full-screen button
 
     var tabs = PROJECTS.map(function (p, i) {
@@ -123,7 +126,9 @@
 
     function fill(p) {
       baseAspect = p.aspect;
+      hasLabels = !!(p.slides && p.slides.some(function (sd) { return sd.label; }));
       embedOnly = !!(p.slides && p.slides.length && p.slides.every(function (sd) { return sd.embed; }));
+      slideData = p.slides || [];
       aspects = (p.slides || []).map(function (sd) { return sd.aspect || p.aspect; });
       setAspect(p.aspect);
 
@@ -214,6 +219,10 @@
       var single = stage.getAttribute("data-mode") === "pdf" || total < 2;
       var fsOk = !!(document.fullscreenEnabled || document.webkitFullscreenEnabled);
       controlsEl.hidden = embedOnly;
+      var cur = (!embedOnly && slideData[slide]) || {};
+      labelEl.hidden = !hasLabels;
+      labelEl.textContent = cur.label || "";
+      labelEl.classList.toggle("is-empty", !cur.label);
       if (hintEl) hintEl.hidden = embedOnly;
       fullBtn.hidden = embedOnly || !fsOk;
       prevBtn.hidden = nextBtn.hidden = counter.hidden = dots.hidden = single;

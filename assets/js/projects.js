@@ -17,6 +17,7 @@
      featured     true = appears on the homepage (first 3 are used)
      slides[].embed   a hosted video, e.g. { embed: "https://www.youtube-nocookie.com/embed/VIDEO_ID?rel=0" }
      coverFallback    optional backup image if the cover fails to load
+     slides[].label   optional caption shown in the top-left corner of the viewer (say what the slide is)
      slides[].aspect  optional: give one slide its own shape (e.g. a wide cover on a portrait deck)
      cover        optional image for the homepage card (defaults to slide 1)
      aspect       slide shape: "16 / 9" (default, matches PowerPoint/Canva
@@ -39,6 +40,7 @@ window.PROJECTS = [
     id: "hemingways-in-town",
     title: "Murder at Wolf Mansion: Hemingway\u2019s in Town\u00A9",
     category: "Murder Mystery Event",
+    year: "2026",
     featured: true,
     tagline: "A 1920s murder mystery dinner and the direct sequel to Murder at Wolf Mansion\u00A9, featuring real historical figures, new characters and new clues.",
     blurb: [
@@ -58,16 +60,16 @@ window.PROJECTS = [
     aspect: "17 / 22",
     slides: [
       { src: "assets/img/projects/hemingways/cover.jpg", alt: "Collage from Murder at Wolf Mansion: Hemingway\u2019s in Town: actors in 1920s costume, a torn marriage certificate clue, a mannequin victim, dinner guests and an old photo of the Parkersburg mansion", aspect: "16 / 9" },
-      { src: "assets/img/projects/hemingways/01.jpg", alt: "Opening ceremony script, page 1: Mary Wolf welcomes the guests and introduces Paul Pfeiffer, his daughter Pauline and Ernest Hemingway" },
-      { src: "assets/img/projects/hemingways/02.jpg", alt: "Opening ceremony script, page 2: Mary Wolf introduces F. Scott Fitzgerald, Mabel Crane and Leon Knox" },
-      { src: "assets/img/projects/hemingways/03.jpg", alt: "Opening ceremony script, page 3: Hadley Richardson, Ida Finch and Lavinia Vale join the scene" },
-      { src: "assets/img/projects/hemingways/04.jpg", alt: "Round 2 clue: comparative writing drafts by F. Scott Fitzgerald and Ernest Hemingway" },
-      { src: "assets/img/projects/hemingways/05.jpg", alt: "Round 2 clue: forensic science report on stab and cutting injuries, with a knife wound" },
-      { src: "assets/img/projects/hemingways/06.jpg", alt: "Round 2 clue: forensic report pages on letter opener and scissors wounds" },
-      { src: "assets/img/projects/hemingways/07.jpg", alt: "Round 1 character bios, page 1: how one character feels about Hemingway, Pauline Pfeiffer, Fitzgerald and others, plus the Round 1 clue letter" },
-      { src: "assets/img/projects/hemingways/08.jpg", alt: "Round 1 character bio for Ida Finch, the maid of Wolf Manor" },
-      { src: "assets/img/projects/hemingways/09.jpg", alt: "Round 2 script and bio for Pauline Pfeiffer" },
-      { src: "assets/img/projects/hemingways/10.jpg", alt: "Round 3 script and bio for Paul Pfeiffer" }
+      { src: "assets/img/projects/hemingways/01.jpg", alt: "Opening ceremony script, page 1: Mary Wolf welcomes the guests and introduces Paul Pfeiffer, his daughter Pauline and Ernest Hemingway", label: "Opening Ceremony" },
+      { src: "assets/img/projects/hemingways/02.jpg", alt: "Opening ceremony script, page 2: Mary Wolf introduces F. Scott Fitzgerald, Mabel Crane and Leon Knox", label: "Opening Ceremony" },
+      { src: "assets/img/projects/hemingways/03.jpg", alt: "Opening ceremony script, page 3: Hadley Richardson, Ida Finch and Lavinia Vale join the scene", label: "Opening Ceremony" },
+      { src: "assets/img/projects/hemingways/04.jpg", alt: "Round 2 clue: comparative writing drafts by F. Scott Fitzgerald and Ernest Hemingway", label: "Example Clue" },
+      { src: "assets/img/projects/hemingways/05.jpg", alt: "Round 2 clue: forensic science report on stab and cutting injuries, with a knife wound", label: "Example Clue" },
+      { src: "assets/img/projects/hemingways/06.jpg", alt: "Round 2 clue: forensic report pages on letter opener and scissors wounds", label: "Example Clue" },
+      { src: "assets/img/projects/hemingways/08.jpg", alt: "Round 1 character bio for Ida Finch, the maid of Wolf Manor", label: "Example Bio for Round 1" },
+      { src: "assets/img/projects/hemingways/07.jpg", alt: "Round 1 character bios, page 1: how one character feels about Hemingway, Pauline Pfeiffer, Fitzgerald and others, plus the Round 1 clue letter", label: "Example Bio for Round 1" },
+      { src: "assets/img/projects/hemingways/09.jpg", alt: "Round 2 script and bio for Pauline Pfeiffer", label: "Example Bio for Round 2" },
+      { src: "assets/img/projects/hemingways/10.jpg", alt: "Round 3 script and bio for Paul Pfeiffer", label: "Example Bio for Round 3" }
     ]
   },
   {
