@@ -649,6 +649,11 @@ main > section:first-child > :not(.corner-swirls) { position: relative; z-index:
 
 /* Footprint trail down the left side (wide screens only) */
 .trail { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; pointer-events: none; z-index: 0; }
+/* The page content sits one layer above the footprints, so a print that reaches a card or text block passes behind it */
+.page-work main { position: relative; }   /* the footprint layer is sized to the whole page */
+.page-work main > section { position: relative; z-index: 1; }
+.page-work main > section.section > .container { background: var(--bg); }   /* solid, so footprints disappear behind the content instead of showing through the text */
+@media (max-width: 700px) { .trail { display: none; } }
 .print { position: absolute; fill: var(--lav-400); opacity: 0; transform: translate(-50%, -50%) scale(0.4); transition: opacity 0.5s ease, transform 0.5s var(--ease); }
 .print.on { opacity: 0.6; transform: var(--t, translate(-50%, -50%)); }
 .page-about main { position: relative; }
