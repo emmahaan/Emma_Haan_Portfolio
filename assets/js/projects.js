@@ -179,15 +179,15 @@ window.PROJECTS = [
     aspect: "17 / 22",
     slides: [
       { src: "assets/img/projects/murder-mystery/cover.jpg", alt: "Collage of photos from the Murder at Wolf Mansion event: guests in 1920s costume reading clues, talking with characters and gathering in the historic house", aspect: "16 / 9" },
-      { src: "assets/img/projects/murder-mystery/01.jpg", alt: "Clue 3: the last will and testament of Charles C. Wolf" },
-      { src: "assets/img/projects/murder-mystery/02.jpg", alt: "Clue 5: a floor plan of the Wolf Mansion with room names and sizes" },
-      { src: "assets/img/projects/murder-mystery/03.jpg", alt: "Clue 10: a newspaper-style call to the community to help rebuild the church" },
-      { src: "assets/img/projects/murder-mystery/04.jpg", alt: "Round 1 bio for Sarah Wolf, page 1: her family, and what she thinks of the other characters" },
-      { src: "assets/img/projects/murder-mystery/05.jpg", alt: "Round 1 bio for Sarah Wolf, page 2: what she thinks of the other characters and the clues she knows" },
-      { src: "assets/img/projects/murder-mystery/06.jpg", alt: "Round 2 bio for Elma Parker, page 1: her role and what she thinks of other characters" },
-      { src: "assets/img/projects/murder-mystery/07.jpg", alt: "Round 2 bio for Elma Parker, page 2: the clues Elma knows" },
-      { src: "assets/img/projects/murder-mystery/08.jpg", alt: "Round 3 bio for Mary Wolf, page 1: her role and what she thinks of other characters" },
-      { src: "assets/img/projects/murder-mystery/09.jpg", alt: "Round 3 bio for Mary Wolf, page 2: the clues Mary knows about" }
+      { src: "assets/img/projects/murder-mystery/01.jpg", alt: "Clue 3: the last will and testament of Charles C. Wolf", label: "Example Clue" },
+      { src: "assets/img/projects/murder-mystery/02.jpg", alt: "Clue 5: a floor plan of the Wolf Mansion with room names and sizes", label: "Example Clue" },
+      { src: "assets/img/projects/murder-mystery/03.jpg", alt: "Clue 10: a newspaper-style call to the community to help rebuild the church", label: "Example Clue" },
+      { src: "assets/img/projects/murder-mystery/04.jpg", alt: "Round 1 bio for Sarah Wolf, page 1: her family, and what she thinks of the other characters", label: "Example Bio for Round 1" },
+      { src: "assets/img/projects/murder-mystery/05.jpg", alt: "Round 1 bio for Sarah Wolf, page 2: what she thinks of the other characters and the clues she knows", label: "Example Bio for Round 1" },
+      { src: "assets/img/projects/murder-mystery/06.jpg", alt: "Round 2 bio for Elma Parker, page 1: her role and what she thinks of other characters", label: "Example Bio for Round 2" },
+      { src: "assets/img/projects/murder-mystery/07.jpg", alt: "Round 2 bio for Elma Parker, page 2: the clues Elma knows", label: "Example Bio for Round 2" },
+      { src: "assets/img/projects/murder-mystery/08.jpg", alt: "Round 3 bio for Mary Wolf, page 1: her role and what she thinks of other characters", label: "Example Bio for Round 3" },
+      { src: "assets/img/projects/murder-mystery/09.jpg", alt: "Round 3 bio for Mary Wolf, page 2: the clues Mary knows about", label: "Example Bio for Round 3" }
     ]
   }
 ];
