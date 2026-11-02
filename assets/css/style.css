@@ -571,6 +571,89 @@ main > section:first-child > :not(.corner-swirls) { position: relative; z-index:
 /* The Work page header is short, so its swirls are smaller to fit */
 .page-hero-compact .swirl { width: 96px; top: calc(var(--header-h) + 6px); }
 
+/* 7c. About page tests: lavender accent, stat counters, tilt cards, footprint trail */
+:root {
+  --lav-50: #f8f5ff;
+  --lav-100: #f0eafd;
+  --lav-200: #e1d5fa;
+  --lav-300: #cbb7f3;
+  --lav-400: #b39bec;
+  --lav-500: #9a7ce0;
+  --lav-700: #6f4fc2;
+}
+
+/* Lavender touches */
+.page-about .icon-box { color: var(--lav-700); background: var(--lav-100); transition: background-color 0.25s, color 0.25s, transform 0.35s var(--ease); }
+.page-about .card:hover .icon-box { color: #fff; background: var(--lav-400); transform: rotate(-8deg) scale(1.12); }
+.page-about .story .card { box-shadow: inset 4px 0 0 var(--lav-300), var(--shadow-sm); }
+.page-about .section-head h2 { position: relative; padding-bottom: 0.7rem; }
+.page-about .section-head h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 64px;
+  height: 5px;
+  border-radius: 5px;
+  background: linear-gradient(90deg, var(--lav-500), var(--lav-200));
+  transition: transform 0.8s var(--ease) 0.35s;
+  transform-origin: left;
+}
+.js .page-about .section-head h2::after { transform: scaleX(0); }
+.js .page-about .section-head.is-in h2::after { transform: scaleX(1); }
+.spark { display: inline-block; width: 0.5em; height: 0.5em; margin-left: 0.15em; vertical-align: 0.55em; fill: var(--lav-400); animation: swirl-twinkle 3.4s ease-in-out infinite; }
+.spark-2 { width: 0.3em; height: 0.3em; margin-left: 0.05em; vertical-align: 0.15em; fill: var(--lav-300); animation-delay: 1.2s; }
+
+/* Counters */
+.stats { display: grid; gap: 1rem; grid-template-columns: repeat(2, 1fr); margin: 0; padding: 0; list-style: none; }
+@media (min-width: 900px) { .stats { grid-template-columns: repeat(4, 1fr); } }
+.stat {
+  position: relative;
+  overflow: hidden;
+  padding: 1.25rem 1.25rem 1.1rem;
+  border: 1px solid var(--lav-200);
+  border-radius: var(--radius);
+  background: linear-gradient(160deg, var(--lav-50), var(--lav-100));
+}
+.stat::after {
+  content: "";
+  position: absolute;
+  right: -28px;
+  top: -28px;
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: var(--lav-200);
+  opacity: 0.55;
+}
+.stat-num {
+  display: block;
+  font-size: var(--fs-2xl);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+  color: var(--lav-700);
+}
+.stat-label { position: relative; z-index: 1; display: block; margin-top: 0.4rem; font-size: 0.92rem; line-height: 1.4; color: var(--text); }
+
+/* Strength cards: slide in one by one, then tilt toward the mouse */
+.js .page-about .strength-grid .card[data-reveal] { transform: translateY(30px) scale(0.96); transition-delay: calc(var(--i, 0) * 130ms); }
+.js .page-about .strength-grid .card[data-reveal].is-in { transform: none; }
+.js .page-about .strength-grid .card.tilt-on {
+  transform: perspective(800px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--ly, 0px));
+  transition: transform 0.18s ease-out, box-shadow 0.25s, border-color 0.25s;
+  transition-delay: 0s;
+}
+.js .page-about .strength-grid .card.tilt-on:hover { --ly: -4px; border-color: var(--lav-300); box-shadow: 0 14px 34px -14px rgba(111, 79, 194, 0.35); }
+
+/* Footprint trail down the left side (wide screens only) */
+.trail { position: absolute; top: 0; left: calc(50% - 634px); width: 44px; height: 100%; display: none; pointer-events: none; z-index: 0; }
+@media (min-width: 1300px) { .trail { display: block; } }
+.print { position: absolute; width: 23px; height: 46px; margin: -23px 0 0 -11.5px; fill: var(--lav-400); opacity: 0; transform: scale(0.4); transition: opacity 0.5s ease, transform 0.5s var(--ease); }
+.print.on { opacity: 0.6; transform: var(--t, none); }
+.page-about main { position: relative; }
+
 /* 8. Home ------------------------------------------------------------------ */
 .hero {
   padding-top: calc(var(--header-h) + clamp(2.5rem, 6vw, 5rem));

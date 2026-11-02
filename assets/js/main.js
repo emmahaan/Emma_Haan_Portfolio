@@ -302,8 +302,104 @@
     });
   }
 
+  /* ---- About page: footprint trail, counters, card tilt ------------------- */
+  var PRINT = '<svg viewBox="0 0 20 40" aria-hidden="true"><path d="M10 1C4.4 1 1.6 5.6 1.6 11.2c0 4.2 1.8 6.6 3.2 9.2h10.4c1.4-2.6 3.2-5 3.2-9.2C18.4 5.6 15.6 1 10 1z"/><path d="M5 26.5c0-1.7 2.2-2.8 5-2.8s5 1.1 5 2.8v4.8c0 3.2-2.2 5.2-5 5.2s-5-2-5-5.2z"/></svg>';
+
+  function initTrail() {
+    var main = $("main");
+    if (!main || !document.body.classList.contains("page-about")) return;
+    var trail = document.createElement("div");
+    trail.className = "trail";
+    trail.setAttribute("aria-hidden", "true");
+    main.insertBefore(trail, main.firstChild);
+    var prints = [];
+
+    function build() {
+      trail.innerHTML = "";
+      prints = [];
+      var H = main.offsetHeight, step = 108, n = Math.max(0, Math.floor((H - 260) / step));
+      for (var i = 0; i < n; i++) {
+        var y = 150 + i * step;
+        var cx = 22 + 9 * Math.sin(i * 0.5);
+        var slope = (9 * 0.5 * Math.cos(i * 0.5)) / (step / 2);   // how the path leans
+        var lean = Math.atan(slope) * 57.3;
+        var left = i % 2 === 0;
+        var el = document.createElement("span");
+        el.innerHTML = PRINT;
+        var svg = el.firstChild;
+        svg.setAttribute("class", "print");
+        svg.style.left = cx + (left ? -6 : 6) + "px";
+        svg.style.top = y + "px";
+        svg.style.setProperty("--t", "rotate(" + (180 - lean) + "deg)" + (left ? " scaleX(-1)" : ""));
+        trail.appendChild(svg);
+        prints.push({ el: svg, y: y });
+      }
+      update();
+    }
+    function update() {
+      var top = main.getBoundingClientRect().top;
+      var reach = window.innerHeight * 0.7 - top;      // how far down the page has been "walked"
+      prints.forEach(function (p) { p.el.classList.toggle("on", p.y < reach); });
+    }
+    build();
+    var ticking = false;
+    window.addEventListener("scroll", function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () { ticking = false; update(); });
+    }, { passive: true });
+    window.addEventListener("resize", build);
+    window.addEventListener("load", build);
+  }
+
+  function initCounters() {
+    var nums = $$("[data-count]");
+    if (!nums.length) return;
+    function fmt(el, v) {
+      el.textContent = (el.getAttribute("data-prefix") || "") + Math.round(v).toLocaleString("en-US") + (el.getAttribute("data-suffix") || "");
+    }
+    if (reduceMotion || !("IntersectionObserver" in window)) return;   // the final numbers are already in the HTML
+    nums.forEach(function (el) { fmt(el, 0); });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        io.unobserve(entry.target);
+        var el = entry.target, end = +el.getAttribute("data-count"), t0 = null;
+        function frame(t) {
+          if (t0 === null) t0 = t;
+          var k = Math.min(1, (t - t0) / 1400);
+          fmt(el, end * (1 - Math.pow(1 - k, 3)));
+          if (k < 1) requestAnimationFrame(frame);
+        }
+        requestAnimationFrame(frame);
+      });
+    }, { threshold: 0.6 });
+    nums.forEach(function (el) { io.observe(el); });
+  }
+
+  function initTilt() {
+    var cards = $$(".page-about .strength-grid .card");
+    if (!cards.length || reduceMotion || !window.matchMedia("(hover: hover)").matches) return;
+    cards.forEach(function (card) {
+      card.addEventListener("pointerenter", function () { if (card.classList.contains("is-in")) card.classList.add("tilt-on"); });
+      card.addEventListener("pointermove", function (e) {
+        var r = card.getBoundingClientRect();
+        var px = (e.clientX - r.left) / r.width - 0.5, py = (e.clientY - r.top) / r.height - 0.5;
+        card.style.setProperty("--rx", (-py * 8).toFixed(2) + "deg");
+        card.style.setProperty("--ry", (px * 10).toFixed(2) + "deg");
+      });
+      card.addEventListener("pointerleave", function () {
+        card.style.setProperty("--rx", "0deg");
+        card.style.setProperty("--ry", "0deg");
+      });
+    });
+  }
+
   applyConfig();
   initSwirls();
+  initTrail();
+  initCounters();
+  initTilt();
   initTransitions();
   initHeader();
   initMobileMenu();
