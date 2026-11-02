@@ -190,6 +190,7 @@
           form.reset();
           say("Thank you! Your message was sent. I'll reply soon.", false);
           toast("Message sent");
+          fireworks(button);
         } else {
           throw new Error((res && res.message) || "send failed");
         }
@@ -202,7 +203,108 @@
     });
   }
 
+  /* ---- Corner swirls (decoration in the top corners of each page) -------- */
+  var SWIRL = "<svg viewBox='0 0 220 150' fill='none' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true' focusable='false'><path class='sw-a' pathLength='1' d='M-6 24 C 26 6, 58 14, 47.3 67.0 L47.3 67.0 L45.2 73.9 L44.3 80.9 L44.5 88.0 L45.9 94.8 L48.2 101.3 L51.6 107.2 L55.8 112.4 L60.8 116.9 L66.3 120.5 L72.3 123.1 L78.5 124.6 L84.8 125.2 L91.1 124.7 L97.2 123.3 L102.8 120.9 L108.0 117.7 L112.5 113.7 L116.2 109.2 L119.2 104.1 L121.2 98.8 L122.4 93.2 L122.6 87.6 L122.0 82.1 L120.5 76.8 L118.2 71.9 L115.1 67.6 L111.5 63.8 L107.4 60.7 L102.8 58.3 L98.1 56.7 L93.2 56.0 L88.3 56.0 L83.6 56.8 L79.1 58.3 L75.0 60.5 L71.4 63.3 L68.3 66.6 L65.8 70.2 L64.0 74.2 L62.9 78.3 L62.4 82.5 L62.7 86.6 L63.5 90.6 L65.0 94.3 L67.0 97.6 L69.5 100.5 L72.4 102.9 L75.6 104.8 L78.9 106.2 L82.4 106.9 L85.9 107.1 L89.2 106.7 L92.4 105.7 L95.3 104.4 L97.9 102.5 L100.2 100.4 L101.9 98.0 L103.3 95.3 L104.1 92.6 L104.5 89.8 L104.5 87.1 L104.0 84.5 L103.1 82.1 L101.8 79.9 L100.3 78.0 L98.5 76.5 L96.6 75.3 L94.5 74.5 L92.4 74.0 L90.3 73.9 L88.4 74.2 L86.5 74.7 L84.9 75.5 L83.5 76.6 L82.3 77.8 L81.4 79.2 L80.7 80.6 L80.4 82.0 L80.3 83.5 L80.4 84.8 L80.8 86.0 L81.4 87.1 L82.1 88.0 L82.9 88.7 L83.7 89.2 L84.6 89.5 L85.5 89.6 L86.3 89.6 L87.0 89.3 L87.6 89.0'/><path class='sw-b' pathLength='1' d='M159.2 9.8 L155.0 12.2 L151.4 15.3 L148.5 19.0 L146.4 23.1 L145.1 27.4 L144.7 31.9 L145.1 36.2 L146.3 40.4 L148.3 44.1 L150.8 47.4 L153.9 50.1 L157.4 52.1 L161.1 53.4 L164.9 54.0 L168.7 53.8 L172.3 52.9 L175.6 51.4 L178.5 49.4 L180.9 46.8 L182.8 44.0 L184.0 40.9 L184.6 37.7 L184.6 34.5 L184.0 31.4 L182.9 28.6 L181.3 26.1 L179.3 24.0 L176.9 22.4 L174.4 21.3 L171.8 20.7 L169.2 20.6 L166.7 21.0 L164.4 21.8 L162.4 23.1 L160.7 24.6 L159.3 26.4 L158.4 28.4 L157.9 30.4 L157.8 32.4 L158.1 34.3 L158.7 36.1 L159.6 37.7 L160.8 38.9 L162.1 39.9 L163.6 40.6 L165.0 40.9 L166.5 41.0 L167.8 40.7 L169.0 40.3 L170.0 39.6 L170.8 38.8 L171.4 37.9 L171.8 36.9 L171.9 36.0 L171.8 35.1 L171.6 34.3 L171.2 33.7 L170.7 33.2 L170.1 32.9 L169.6 32.8'/><circle class='sw-dot' cx='132' cy='14' r='3.2'/><circle class='sw-dot sw-dot-2' cx='196' cy='84' r='2.4'/><circle class='sw-dot sw-dot-3' cx='40' cy='128' r='2.8'/><path class='sw-star' d='M150 100 l2.2 5.8 5.8 2.2 -5.8 2.2 -2.2 5.8 -2.2 -5.8 -5.8 -2.2 5.8 -2.2z'/></svg>";
+  function initSwirls() {
+    var first = $("main > section:first-child");
+    if (!first) return;
+    var wrap = document.createElement("div");
+    wrap.className = "corner-swirls";
+    wrap.setAttribute("aria-hidden", "true");
+    wrap.innerHTML = '<div class="swirl swirl-l">' + SWIRL + '</div><div class="swirl swirl-r">' + SWIRL + "</div>";
+    first.insertBefore(wrap, first.firstChild);
+  }
+
+  /* ---- Fireworks: mini bursts that pop out of a button -------------------- */
+  var FX_COLORS = ["#5a66d6", "#959ff0", "#f5b942", "#ff7aa8", "#5fd3b0", "#ffffff", "#b9c0f7"];
+  var fxLayer;
+  function fxHost() {
+    if (!fxLayer) {
+      fxLayer = document.createElement("div");
+      fxLayer.className = "fx-layer";
+      fxLayer.setAttribute("aria-hidden", "true");
+      document.body.appendChild(fxLayer);
+    }
+    return fxLayer;
+  }
+  function pick(list) { return list[Math.floor(Math.random() * list.length)]; }
+
+  function popAt(x, y, count) {
+    var host = fxHost();
+    var ring = document.createElement("span");
+    var rc = pick(FX_COLORS.slice(0, 5));
+    ring.className = "fx-ring";
+    ring.style.cssText = "left:" + (x - 6) + "px;top:" + (y - 6) + "px;width:12px;height:12px;border-color:" + rc;
+    host.appendChild(ring);
+    ring.animate(
+      [{ transform: "scale(0.4)", opacity: 0.9 }, { transform: "scale(4.2)", opacity: 0 }],
+      { duration: 650, easing: "cubic-bezier(0.22, 1, 0.36, 1)" }
+    ).onfinish = function () { ring.remove(); };
+
+    for (var i = 0; i < count; i++) {
+      var bit = document.createElement("span");
+      var size = 4 + Math.random() * 5;
+      var angle = (Math.PI * 2 * i) / count + Math.random() * 0.5;
+      var dist = 34 + Math.random() * 46;
+      var dx = Math.cos(angle) * dist;
+      var dy = Math.sin(angle) * dist;
+      bit.className = "fx-bit";
+      bit.style.cssText = "left:" + (x - size / 2) + "px;top:" + (y - size / 2) + "px;width:" + size + "px;height:" + size +
+        "px;background:" + pick(FX_COLORS) + ";box-shadow:0 0 6px " + rc + "80";
+      host.appendChild(bit);
+      bit.animate(
+        [
+          { transform: "translate(0,0) scale(1)", opacity: 1 },
+          { transform: "translate(" + dx * 0.8 + "px," + dy * 0.8 + "px) scale(1)", opacity: 1, offset: 0.55 },
+          { transform: "translate(" + dx + "px," + (dy + 22) + "px) scale(0.2)", opacity: 0 }
+        ],
+        { duration: 750 + Math.random() * 350, easing: "cubic-bezier(0.16, 0.84, 0.3, 1)" }
+      ).onfinish = (function (b) { return function () { b.remove(); }; })(bit);
+    }
+  }
+
+  function fireworks(el) {
+    if (reduceMotion || !el.animate) return;
+    var r = el.getBoundingClientRect();
+    [[0, 0.3, 0.45], [140, 0.72, 0.35], [280, 0.5, 0.6], [430, 0.2, 0.55], [540, 0.85, 0.5]].forEach(function (w) {
+      setTimeout(function () { popAt(r.left + r.width * w[1], r.top + r.height * w[2], 14); }, w[0]);
+    });
+    if (el.animate) el.animate(
+      [{ transform: "scale(1)" }, { transform: "scale(1.06)" }, { transform: "scale(1)" }],
+      { duration: 380, easing: "ease-out" }
+    );
+  }
+
+  /* ---- Page transitions + fireworks on the main buttons --------------------
+     Followed links fade the page out first. Blue/white buttons that open
+     another page set off the fireworks, then go. */
+  function initTransitions() {
+    window.addEventListener("pageshow", function (e) {
+      if (e.persisted) document.documentElement.classList.remove("is-leaving");
+    });
+    document.addEventListener("click", function (e) {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      var a = e.target.closest && e.target.closest("a[href]");
+      if (!a || (a.target && a.target !== "_self") || a.hasAttribute("download")) return;
+      var url;
+      try { url = new URL(a.href, window.location.href); } catch (err) { return; }
+      if (url.protocol !== window.location.protocol || url.host !== window.location.host) return;
+      var path = url.pathname;
+      if (!/(\.html?|\/)$/.test(path)) return;
+      if (path === window.location.pathname && url.hash) return; // same-page jump
+      if (reduceMotion) return;
+      e.preventDefault();
+      var showy = a.classList.contains("btn") && !a.classList.contains("btn-outline") && !a.classList.contains("header-cta");
+      var wait = 200;
+      if (showy) { fireworks(a); wait = 900; }
+      setTimeout(function () { document.documentElement.classList.add("is-leaving"); }, Math.max(0, wait - 230));
+      setTimeout(function () { window.location.href = url.href; }, wait);
+    });
+  }
+
   applyConfig();
+  initSwirls();
+  initTransitions();
   initHeader();
   initMobileMenu();
   initReveal();

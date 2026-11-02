@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Emma Haan — Marketing Portfolio
+   Emma Haan — Portfolio
    One stylesheet for every page so color, type and spacing stay consistent.
 
    1. Tokens
@@ -500,6 +500,76 @@ a:hover { color: var(--peri-700); }
   }
   .js [data-reveal] { opacity: 1; transform: none; }
 }
+
+/* 7b. Extra polish: page transitions, fireworks, corner swirls -------------- */
+/* The page fades in on arrival and out when a link is followed. */
+.js body { animation: page-in 0.5s var(--ease) both; }
+@keyframes page-in { from { opacity: 0; } to { opacity: 1; } }
+.js body { transition: opacity 0.22s ease; }
+html.is-leaving body { opacity: 0; }
+
+/* Hero text and photo glide in one after another */
+.js .hero-grid > div:first-child > *,
+.js .about-grid > div:last-child > .label,
+.js .about-grid > div:last-child > h1,
+.js .page-hero .container > * { animation: rise 0.7s var(--ease) both; }
+.js .hero-grid > div:first-child > :nth-child(2) { animation-delay: 0.08s; }
+.js .hero-grid > div:first-child > :nth-child(3) { animation-delay: 0.16s; }
+.js .hero-grid > div:first-child > :nth-child(4) { animation-delay: 0.24s; }
+.js .hero-grid > div:first-child > :nth-child(5) { animation-delay: 0.32s; }
+.js .hero-photo, .js .about-photo { animation: pop-in 0.9s var(--ease) 0.15s both; }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes pop-in { from { opacity: 0; transform: scale(0.96) translateY(10px); } to { opacity: 1; transform: none; } }
+
+/* Buttons: a soft shine sweeps across on hover, and they press in on click */
+.btn { position: relative; overflow: hidden; isolation: isolate; }
+.btn::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 -60%;
+  width: 40%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transform: skewX(-18deg);
+  transition: transform 0.7s var(--ease);
+  pointer-events: none;
+  z-index: -1;
+}
+.btn:hover::after { transform: translateX(520%) skewX(-18deg); }
+.btn:active { transform: scale(0.97); }
+.card, .project-tab, .tab { transition-property: transform, box-shadow, border-color, background-color, color; }
+
+/* Fireworks that pop out of a button when it is clicked */
+.fx-layer { position: fixed; inset: 0; z-index: 9999; pointer-events: none; overflow: hidden; }
+.fx-bit { position: absolute; border-radius: 50%; will-change: transform, opacity; }
+.fx-ring { position: absolute; border-radius: 50%; border: 2px solid; will-change: transform, opacity; }
+
+/* Little swirls in the top corners, drawn in behind the page content */
+main > section:first-child { position: relative; }
+main > section:first-child > :not(.corner-swirls) { position: relative; z-index: 1; }
+.corner-swirls { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+.swirl {
+  position: absolute;
+  top: calc(var(--header-h) + 4px);
+  left: 0;
+  width: clamp(104px, 15vw, 210px);
+  opacity: 0.85;
+}
+.swirl-r { left: auto; right: 0; transform: scaleX(-1); }
+.swirl svg { width: 100%; height: auto; overflow: visible; transform-origin: 40% 55%; animation: swirl-float 9s ease-in-out 1.8s infinite alternate; }
+.swirl-r svg { animation-delay: 2.4s; animation-direction: alternate-reverse; }
+.swirl path { stroke-width: 2.6; }
+.swirl .sw-a { stroke: var(--peri-300); stroke-dasharray: 1; stroke-dashoffset: 0; animation: swirl-draw 2s var(--ease) 0.2s both; }
+.swirl .sw-b { stroke: var(--peri-400); stroke-width: 2.2; stroke-dasharray: 1; animation: swirl-draw 1.6s var(--ease) 0.7s both; }
+.swirl .sw-dot { fill: var(--peri-300); animation: swirl-twinkle 3.2s ease-in-out infinite; }
+.swirl .sw-dot-2 { fill: var(--peri-400); animation-delay: 1s; }
+.swirl .sw-dot-3 { animation-delay: 2s; }
+.swirl .sw-star { fill: var(--peri-400); stroke: none; transform-box: fill-box; transform-origin: center; animation: swirl-twinkle 3.6s ease-in-out 0.5s infinite; }
+@keyframes swirl-draw { from { stroke-dashoffset: 1; opacity: 0; } 15% { opacity: 1; } to { stroke-dashoffset: 0; opacity: 1; } }
+@keyframes swirl-float { from { transform: rotate(-3deg) translateY(0); } to { transform: rotate(3deg) translateY(6px); } }
+@keyframes swirl-twinkle { 0%, 100% { opacity: 0.35; transform: scale(0.85); } 50% { opacity: 1; transform: scale(1.15); } }
+@media (max-width: 560px) { .swirl { width: 84px; opacity: 0.7; } }
+/* The Work page header is short, so its swirls are smaller to fit */
+.page-hero-compact .swirl { width: 96px; top: calc(var(--header-h) + 6px); }
 
 /* 8. Home ------------------------------------------------------------------ */
 .hero {

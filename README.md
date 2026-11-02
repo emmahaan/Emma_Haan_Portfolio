@@ -1,4 +1,4 @@
-# Emma Haan — Marketing Portfolio
+# Emma Haan — Portfolio
 
 A static GitHub Pages site built with plain HTML, CSS and JavaScript. It has no build step: edit a file, commit it, and the site updates.
 
