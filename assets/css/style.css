@@ -586,8 +586,8 @@ main > section:first-child > :not(.corner-swirls) { position: relative; z-index:
 .page-about .icon-box { color: var(--lav-700); background: var(--lav-100); transition: background-color 0.25s, color 0.25s, transform 0.35s var(--ease); }
 .page-about .card:hover .icon-box { color: #fff; background: var(--lav-400); transform: rotate(-8deg) scale(1.12); }
 .page-about .story .card { box-shadow: inset 4px 0 0 var(--lav-300), var(--shadow-sm); }
-.page-about .section-head h2 { position: relative; padding-bottom: 0.7rem; }
-.page-about .section-head h2::after {
+#strengths-h { position: relative; padding-bottom: 0.7rem; }
+#strengths-h::after {
   content: "";
   position: absolute;
   left: 0;
@@ -599,10 +599,8 @@ main > section:first-child > :not(.corner-swirls) { position: relative; z-index:
   transition: transform 0.8s var(--ease) 0.35s;
   transform-origin: left;
 }
-.js .page-about .section-head h2::after { transform: scaleX(0); }
-.js .page-about .section-head.is-in h2::after { transform: scaleX(1); }
-.spark { display: inline-block; width: 0.5em; height: 0.5em; margin-left: 0.15em; vertical-align: 0.55em; fill: var(--lav-400); animation: swirl-twinkle 3.4s ease-in-out infinite; }
-.spark-2 { width: 0.3em; height: 0.3em; margin-left: 0.05em; vertical-align: 0.15em; fill: var(--lav-300); animation-delay: 1.2s; }
+.js #strengths-h::after { transform: scaleX(0); }
+.js .section-head.is-in #strengths-h::after { transform: scaleX(1); }
 
 /* Counters */
 .stats { display: grid; gap: 1rem; grid-template-columns: repeat(2, 1fr); margin: 0; padding: 0; list-style: none; }
@@ -754,6 +752,75 @@ main > section:first-child > :not(.corner-swirls) { position: relative; z-index:
 .cta-panel p { margin: 0; max-width: 52ch; }
 .cta-panel .btn-outline { color: #fff; background: transparent; border-color: rgba(255, 255, 255, 0.5); }
 .cta-panel .btn-outline:hover { color: #fff; background: rgba(255, 255, 255, 0.12); border-color: #fff; }
+
+/* 8b. Home: "What I bring" cards, each with its own look -------------------- */
+.v-card { position: relative; overflow: hidden; border-width: 1px; transition: border-color 0.2s, box-shadow 0.25s, transform 0.3s var(--ease); }
+.v-card > * { position: relative; z-index: 1; }
+.v-card .v-mark { position: absolute; z-index: 0; right: -16px; bottom: -18px; width: 120px; height: 120px; opacity: 0.1; transform: rotate(-14deg); transition: transform 0.5s var(--ease), opacity 0.3s; }
+.v-card:hover .v-mark { transform: rotate(-4deg) scale(1.12); opacity: 0.17; }
+.v-card .icon-box { width: 50px; height: 50px; border-radius: 16px; transform: rotate(-6deg); transition: transform 0.4s var(--ease); }
+.v-card:hover .icon-box { transform: rotate(6deg) scale(1.1); }
+.value-grid .v-card h3 { margin-bottom: 0.55rem; }
+.value-grid .v-card p { position: relative; z-index: 1; }
+.value-grid .v-card:hover { transform: translateY(-6px) rotate(-0.7deg); }
+.value-grid .v-card:nth-child(even):hover { transform: translateY(-6px) rotate(0.7deg); }
+
+/* Writing: handwritten title with a squiggle that draws itself */
+.v-write { color: var(--peri-600); background: linear-gradient(160deg, #f7f8ff, var(--peri-100)); border-color: var(--peri-200); }
+.v-write:hover { border-color: var(--peri-400); box-shadow: 0 16px 34px -16px rgba(90, 102, 214, 0.45); }
+.v-write .icon-box { color: var(--peri-600); background: #fff; box-shadow: 0 4px 12px -6px rgba(90, 102, 214, 0.5); }
+.value-grid .v-write h3 { font-family: "Caveat", "Segoe Script", cursive; font-size: 2.15rem; font-weight: 700; line-height: 1; letter-spacing: 0; color: var(--peri-700); }
+.v-write h3::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 9px;
+  margin-top: 0.3rem;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='9'%3E%3Cpath d='M0 4.5 Q6 0 12 4.5 T24 4.5' fill='none' stroke='%23959ff0' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x left center / 24px 9px;
+  transition: width 1s var(--ease) 0.35s;
+}
+.js .v-write h3::after { width: 0; }
+.js .v-write.is-in h3::after { width: 100%; }
+
+/* Project management: tidy monospace title and a progress bar that fills */
+.v-plan { color: var(--lav-700); background: linear-gradient(160deg, var(--lav-50), var(--lav-100)); border-color: var(--lav-200); }
+.v-plan:hover { border-color: var(--lav-400); box-shadow: 0 16px 34px -16px rgba(111, 79, 194, 0.45); }
+.v-plan .icon-box { color: var(--lav-700); background: #fff; box-shadow: 0 4px 12px -6px rgba(111, 79, 194, 0.5); }
+.value-grid .v-plan h3 { font-family: "DM Mono", ui-monospace, Consolas, monospace; font-size: 1.02rem; font-weight: 500; letter-spacing: 0.02em; text-transform: uppercase; color: var(--lav-700); }
+.v-plan h3::before { content: "\2713  "; color: var(--lav-500); }
+.v-plan::after { content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 5px; background: linear-gradient(90deg, var(--lav-500), var(--lav-300)); transform-origin: left; transition: transform 1.6s var(--ease) 0.5s; }
+.js .v-plan::after { transform: scaleX(0); }
+.js .v-plan.is-in::after { transform: scaleX(1); }
+
+/* Event planning: confetti and a bouncy italic title */
+.v-event {
+  color: #c2477a;
+  background:
+    radial-gradient(circle at 90% 12%, #ff7aa8 0 3px, transparent 4px),
+    radial-gradient(circle at 80% 24%, #f5b942 0 2.5px, transparent 3.5px),
+    radial-gradient(circle at 94% 32%, #5fd3b0 0 2.5px, transparent 3.5px),
+    radial-gradient(circle at 72% 9%, #959ff0 0 2px, transparent 3px),
+    radial-gradient(circle at 86% 40%, #ff7aa8 0 1.8px, transparent 2.8px),
+    linear-gradient(160deg, #fff7fa, #ffe8f0);
+  border-color: #fad3e2;
+}
+.v-event:hover { border-color: #f09bbd; box-shadow: 0 16px 34px -16px rgba(194, 71, 122, 0.4); }
+.v-event .icon-box { color: #c2477a; background: #fff; box-shadow: 0 4px 12px -6px rgba(194, 71, 122, 0.5); }
+.value-grid .v-event h3 { font-family: "Fraunces", Georgia, serif; font-style: italic; font-size: 1.55rem; font-weight: 700; letter-spacing: -0.01em; color: #a93a68; }
+
+/* Attention to detail: typewriter title with a blinking cursor */
+.v-detail { color: #1f8a63; background: linear-gradient(160deg, #f3fcf8, #e1f5ec); border-color: #bfe8d5; }
+.v-detail:hover { border-color: #7fcfa9; box-shadow: 0 16px 34px -16px rgba(31, 138, 99, 0.4); }
+.v-detail .icon-box { color: #1f8a63; background: #fff; box-shadow: 0 4px 12px -6px rgba(31, 138, 99, 0.5); }
+.value-grid .v-detail h3 { font-family: "Special Elite", "Courier New", monospace; font-size: 1.3rem; font-weight: 400; letter-spacing: 0; color: #176a4c; }
+.v-detail h3::after { content: "_"; margin-left: 2px; animation: caret 1s steps(1) infinite; }
+@keyframes caret { 50% { opacity: 0; } }
+
+/* "Let's connect" box: a bright line runs around the edge and fades behind itself */
+.cta-panel[data-trace] { position: relative; }
+.trace { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.trace rect { animation: trace-run 7s linear infinite; filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.95)); }
+@keyframes trace-run { from { stroke-dashoffset: var(--l); } to { stroke-dashoffset: var(--e); } }
 
 /* 9. About ----------------------------------------------------------------- */
 .about-hero {
@@ -993,9 +1060,7 @@ main > section:first-child > :not(.corner-swirls) { position: relative; z-index:
 .stage {
   position: relative;
   margin-inline: auto;
-  /* Tall enough to read, short enough that the caption (top left) and the
-     next button (bottom right) stay on screen together */
-  --stage-h: clamp(300px, calc(100vh - 310px), 75vh);
+  --stage-h: 75vh;
   aspect-ratio: var(--aspect, 16 / 10);
   max-height: var(--stage-h);
   overflow: hidden;
@@ -1040,23 +1105,25 @@ main > section:first-child > :not(.corner-swirls) { position: relative; z-index:
 }
 .pdf-open { position: absolute; right: 0.75rem; top: 0.75rem; z-index: 2; }
 
-/* Caption in the top-left corner of the viewer: says what the slide is */
+/* Caption sits just above the slide counter, bottom left of the viewer */
 .viewer-label {
-  margin: 0 0 0.45rem;
+  margin: 0.8rem 0 0.1rem;
   min-height: 1.5em;
-  font-size: var(--fs-md, 1.05rem);
-  font-weight: 700;
-  line-height: 1.5;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0;
   color: var(--ink);
 }
 .viewer-label.is-empty { visibility: hidden; }
-.viewer.is-fullscreen .viewer-label { flex: none; color: #fff; margin-bottom: 0.5rem; }
+.viewer.is-fullscreen .viewer-label { flex: none; color: #fff; margin: 0.6rem 0 0; }
 
 .viewer-controls {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  margin-top: 0.7rem;
+  margin-top: 0.5rem;
 }
 .viewer-btn {
   display: grid;

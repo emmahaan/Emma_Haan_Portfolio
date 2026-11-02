@@ -307,7 +307,7 @@
 
   function initTrail() {
     var main = $("main");
-    if (!main || !document.body.classList.contains("page-about")) return;
+    if (!main || !document.body.classList.contains("page-work")) return;   // footprints live on the Work page
     var trail = document.createElement("div");
     trail.className = "trail";
     trail.setAttribute("aria-hidden", "true");
@@ -327,30 +327,39 @@
     function build() {
       trail.innerHTML = "";
       prints = [];
-      // how much empty space is there to the left of the page content?
-      var left = Infinity;
-      $$(".about-photo, .stats, .story .card, .strength-grid, .section-head, .cta-panel").forEach(function (el) {
+      // find the blocks of page content, so the trail can keep to the empty space on the left
+      var mainTop = main.getBoundingClientRect().top;
+      var blockers = [];
+      $$(".page-title, .tabs-scroller, .project-header, .viewer, .project-body, .project-pager").forEach(function (el) {
         var r = el.getBoundingClientRect();
-        if (r.width) left = Math.min(left, r.left);
+        if (!r.width) return;
+        blockers.push({ top: r.top - mainTop, bottom: r.bottom - mainTop, left: r.left });
       });
-      var avail = left - 38;                        // keeps well clear of the photo frame and cards
-      if (!(avail >= 50)) return;                   // not enough room: no trail
-      var H = main.offsetHeight, rand = rng(11), y = 300;
+      function limitFor(y0, y1) {
+        var lim = 320;
+        blockers.forEach(function (b) { if (b.bottom > y0 && b.top < y1) lim = Math.min(lim, b.left); });
+        return lim - 10;                               // always leave a gap beside the content
+      }
+      var H = main.offsetHeight, rand = rng(11), y = 220;
 
-      while (y < H - 340) {
+      while (y < H - 300) {
         var D = 150 + rand() * 220;                 // height of this arc
-        var bulge = Math.min(D * 0.45, avail - 28); // how far it swings in from the edge
-        var cy = y + D / 2;
         var scale = 0.65 + rand() * 0.6;            // each arc has its own print size
         var spacing = (38 + rand() * 48) * scale;   // ...and its own walking pace
         var t0 = -Math.PI / 2 + (rand() < 0.35 ? rand() * 0.55 : 0);
         var t1 = Math.PI / 2 - (rand() < 0.35 ? rand() * 0.55 : 0);
+        var reverse = rand() < 0.4;
+        var gap = 130 + rand() * 360;
+        var x0 = 8 + 14 * scale;                   // arcs start near the screen edge
+        var bulge = Math.min(D * 0.45, limitFor(y - 10, y + D + 10) - x0 - 18 * scale);
+        if (bulge < 5) { y += 60; continue; }      // no room beside this part of the page: try further down
+        var cy = y + D / 2;
         var pts = [];
         for (var k = 0; k <= 90; k++) {
           var t = t0 + ((t1 - t0) * k) / 90;
-          pts.push([12 + bulge * Math.cos(t), cy + (D / 2) * Math.sin(t)]);
+          pts.push([x0 + bulge * Math.cos(t), cy + (D / 2) * Math.sin(t)]);
         }
-        if (rand() < 0.4) pts.reverse();            // some arcs walk upward
+        if (reverse) pts.reverse();                 // some arcs walk upward
         var acc = 0, next = 0, foot = 0;
         for (var s = 0; s < pts.length - 1; s++) {
           var a = pts[s], b = pts[s + 1];
@@ -374,7 +383,7 @@
           }
           acc += seg;
         }
-        y += D + 130 + rand() * 360;
+        y += D + gap;
       }
       update();
     }
@@ -390,8 +399,51 @@
       ticking = true;
       requestAnimationFrame(function () { ticking = false; update(); });
     }, { passive: true });
-    window.addEventListener("resize", build);
-    window.addEventListener("load", build);
+    var timer;
+    function later() { clearTimeout(timer); timer = setTimeout(build, 150); }
+    window.addEventListener("resize", later);
+    window.addEventListener("load", later);
+    if ("ResizeObserver" in window) new ResizeObserver(later).observe(main);   // project changed, so the page got taller or shorter
+  }
+
+  /* ---- Glowing line that circles a box (the "Let's connect" panel) ---------- */
+  function initTrace() {
+    if (reduceMotion) return;
+    $$("[data-trace]").forEach(function (box) {
+      var NS = "http://www.w3.org/2000/svg";
+      var svg = document.createElementNS(NS, "svg");
+      svg.setAttribute("class", "trace");
+      svg.setAttribute("aria-hidden", "true");
+      var rects = [];
+      // a bright head with a tail that gets fainter and longer behind it
+      [[3, 1], [8, 0.75], [16, 0.55], [26, 0.4], [40, 0.28]].forEach(function (s) {
+        var r = document.createElementNS(NS, "rect");
+        r.setAttribute("pathLength", "100");
+        r.setAttribute("fill", "none");
+        r.setAttribute("stroke", "#fff");
+        r.setAttribute("stroke-width", "3.5");
+        r.setAttribute("stroke-linecap", "round");
+        r.style.opacity = s[1];
+        r.style.setProperty("--l", s[0]);
+        r.style.setProperty("--e", s[0] - 100);
+        r.style.strokeDasharray = s[0] + " " + (100 - s[0]);
+        svg.appendChild(r);
+        rects.push(r);
+      });
+      box.appendChild(svg);
+      function size() {
+        var w = box.offsetWidth, h = box.offsetHeight;
+        var rad = parseFloat(getComputedStyle(box).borderTopLeftRadius) || 22;
+        svg.setAttribute("viewBox", "0 0 " + w + " " + h);
+        rects.forEach(function (r) {
+          r.setAttribute("x", 1.5); r.setAttribute("y", 1.5);
+          r.setAttribute("width", w - 3); r.setAttribute("height", h - 3);
+          r.setAttribute("rx", Math.max(0, rad - 1.5));
+        });
+      }
+      size();
+      if ("ResizeObserver" in window) new ResizeObserver(size).observe(box); else window.addEventListener("resize", size);
+    });
   }
 
   function initCounters() {
@@ -440,6 +492,7 @@
   applyConfig();
   initSwirls();
   initTrail();
+  initTrace();
   initCounters();
   initTilt();
   initTransitions();
