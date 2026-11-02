@@ -73,6 +73,29 @@ window.PROJECTS = [
     ]
   },
   {
+    id: "stolen",
+    title: "Stolen",
+    category: "Short Film",
+    year: "2026",
+    featured: true,
+    tagline: "A short film where a group of friends go on a mission to get back what was stolen from them.",
+    blurb:
+      "Stolen is a student-made short film that I wrote, helped direct and acted in. Lennon calls his friends together to tell them that something was stolen from him, and according to Lennon it is sitting in a girl named Lisa\u2019s house. The group sets out on a mission to break in and take it back. As head writer I wrote the script, shaping the story and characters, and I worked with the cast as a director while also performing on screen.",
+    results: [
+      "Received the highest rating at two film contests",
+      "Received all-state recognition from the Iowa High School Speech Association"
+    ],
+    role: "Head Writer, Director & Actor",
+    client: "Aplington-Parkersburg Speech Team",
+    skills: ["Scriptwriting", "Leadership", "Managing Actors", "Storyboarding"],
+    cover: "https://i.ytimg.com/vi/ekTW2sTzFkQ/maxresdefault.jpg",
+    coverFallback: "https://i.ytimg.com/vi/ekTW2sTzFkQ/hqdefault.jpg",
+    aspect: "16 / 9",
+    slides: [
+      { embed: "https://www.youtube-nocookie.com/embed/ekTW2sTzFkQ?rel=0", alt: "Stolen, a student short film written by Emma Haan" }
+    ]
+  },
+  {
     id: "wolf-mansion",
     title: "DECA Community Giving Project - Murder at Wolf Mansion",
     tabTitle: "DECA PMCG Project",
@@ -118,29 +141,6 @@ window.PROJECTS = [
     ]
   },
   {
-    id: "stolen",
-    title: "Stolen",
-    category: "Short Film",
-    year: "2026",
-    featured: true,
-    tagline: "A short film where a group of friends go on a mission to get back what was stolen from them.",
-    blurb:
-      "Stolen is a student-made short film that I wrote, helped direct and acted in. Lennon calls his friends together to tell them that something was stolen from him, and according to Lennon it is sitting in a girl named Lisa\u2019s house. The group sets out on a mission to break in and take it back. As head writer I wrote the script, shaping the story and characters, and I worked with the cast as a director while also performing on screen.",
-    results: [
-      "Received the highest rating at two film contests",
-      "Received all-state recognition from the Iowa High School Speech Association"
-    ],
-    role: "Head Writer, Director & Actor",
-    client: "Aplington-Parkersburg Speech Team",
-    skills: ["Scriptwriting", "Leadership", "Managing Actors", "Storyboarding"],
-    cover: "https://i.ytimg.com/vi/ekTW2sTzFkQ/maxresdefault.jpg",
-    coverFallback: "https://i.ytimg.com/vi/ekTW2sTzFkQ/hqdefault.jpg",
-    aspect: "16 / 9",
-    slides: [
-      { embed: "https://www.youtube-nocookie.com/embed/ekTW2sTzFkQ?rel=0", alt: "Stolen, a student short film written by Emma Haan" }
-    ]
-  },
-  {
     id: "ffa-mystery",
     title: "Murder at the FFA Banquet",
     category: "Murder Mystery Event",
@@ -158,7 +158,7 @@ window.PROJECTS = [
     cover: "assets/img/projects/ffa-mystery/cover.jpg",
     aspect: "17 / 22",
     slides: [
-      { src: "assets/img/projects/ffa-mystery/cover.jpg", alt: "Collage of photos from the Murder at the FFA Banquet: guests at dinner tables comparing clues, the FFA officer team who played the suspects, and an officer speaking at the podium", aspect: "16 / 9" },
+      { src: "assets/img/projects/ffa-mystery/cover.jpg", alt: "Collage of photos from the Murder at the FFA Banquet: guests at dinner tables comparing clues, the event poster, an actor playing a suspect, the FFA officer team and an officer speaking at the podium", aspect: "16 / 9" },
       { src: "assets/img/projects/ffa-mystery/clue-21.jpg", alt: "Example clue: internship application", label: "Examples clues" },
       { src: "assets/img/projects/ffa-mystery/clue-23.jpg", alt: "Example clue: judge scoring rubric from a District FFA Public Speaking contest", label: "Examples clues" },
       { src: "assets/img/projects/ffa-mystery/clue-25.jpg", alt: "Example clue: Butler County EMS incident summary", label: "Examples clues" },

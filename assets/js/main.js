@@ -328,18 +328,23 @@
       trail.innerHTML = "";
       prints = [];
       var H = main.offsetHeight, rand = rng(11), y = 220;
+      // the empty strip beside the page content: the footprints are sized to fit inside it
+      var cont = $("main .container"), gutter = 40;
+      if (cont) gutter = cont.getBoundingClientRect().left + (parseFloat(getComputedStyle(cont).paddingLeft) || 0);
+      var sMax = Math.max(0.28, Math.min(0.6, (gutter - 14) / 60));
 
       while (y < H - 120) {
-        var D = 150 + rand() * 220;                 // height of this arc
-        if (y + D > H - 10) D = Math.max(110, H - 10 - y);   // the last arc finishes at the bottom of the page
-        var scale = 0.65 + rand() * 0.6;            // each arc has its own print size
-        var spacing = (38 + rand() * 48) * scale;   // ...and its own walking pace
+        var D = 70 + rand() * 130;                  // height of this arc
+        if (y + D > H - 10) D = Math.max(60, H - 10 - y);    // the last arc finishes at the bottom of the page
+        var scale = sMax * (0.6 + rand() * 0.4);    // each arc has its own (small) print size
+        var spacing = (62 + rand() * 60) * scale;   // ...and its own walking pace
         var t0 = -Math.PI / 2 + (rand() < 0.35 ? rand() * 0.55 : 0);
         var t1 = Math.PI / 2 - (rand() < 0.35 ? rand() * 0.55 : 0);
         var reverse = rand() < 0.4;
-        var gap = 30 + rand() * 150;
-        var x0 = 8 + 14 * scale;                    // arcs start near the screen edge
-        var bulge = D * 0.5;                        // a true semicircle; where it meets page content it simply passes behind it
+        var gap = 20 + rand() * 110;
+        var x0 = 3 + 27 * scale;                    // arcs start near the screen edge
+        var bulge = Math.min(D * 0.5, gutter - x0 - 17 * scale - 6);   // as deep as the side strip allows
+        if (bulge < 6) { y += 40; continue; }
         var cy = y + D / 2;
         var pts = [];
         for (var k = 0; k <= 90; k++) {
@@ -402,21 +407,23 @@
       svg.setAttribute("class", "trace");
       svg.setAttribute("aria-hidden", "true");
       var rects = [];
-      // a bright head with a tail that gets fainter and longer behind it
-      [[3, 1], [8, 0.75], [16, 0.55], [26, 0.4], [40, 0.28]].forEach(function (s) {
+      // a bright head with a long tail that fades out smoothly: many thin layers, each a little longer and fainter
+      var STEPS = 40, TAIL = 46;
+      for (var n = 0; n < STEPS; n++) {
+        var len = 1.5 + (TAIL - 1.5) * Math.pow((n + 1) / STEPS, 1.15);
         var r = document.createElementNS(NS, "rect");
         r.setAttribute("pathLength", "100");
         r.setAttribute("fill", "none");
         r.setAttribute("stroke", "#fff");
         r.setAttribute("stroke-width", "3.5");
         r.setAttribute("stroke-linecap", "round");
-        r.style.opacity = s[1];
-        r.style.setProperty("--l", s[0]);
-        r.style.setProperty("--e", s[0] - 100);
-        r.style.strokeDasharray = s[0] + " " + (100 - s[0]);
+        r.style.opacity = 0.075;
+        r.style.setProperty("--l", len.toFixed(2));
+        r.style.setProperty("--e", (len - 100).toFixed(2));
+        r.style.strokeDasharray = len.toFixed(2) + " " + (100 - len).toFixed(2);
         svg.appendChild(r);
         rects.push(r);
-      });
+      }
       box.appendChild(svg);
       function size() {
         var w = box.offsetWidth, h = box.offsetHeight;
