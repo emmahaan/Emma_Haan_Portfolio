@@ -141,22 +141,33 @@ window.PROJECTS = [
     ]
   },
   {
-    id: "market-research",
-    title: "Project Title Four",
-    category: "Market Research",
-    year: "2025",
-    tagline: "A survey and competitive analysis on [topic] with clear recommendations.",
-    blurb: "Placeholder. The question you set out to answer, how you gathered data and what you found.",
-    results: ["Number of responses collected", "Top finding", "Recommendation made"],
-    role: "Researcher",
-    client: "Course name",
-    tools: ["Google Forms", "Excel", "Tableau"],
-    skills: ["Survey design", "Data analysis", "Presenting"],
-    aspect: "16 / 9",
+    id: "ffa-mystery",
+    title: "Murder at the FFA Banquet",
+    category: "Murder Mystery Event",
+    tagline: "An original dinner-style murder mystery for a local FFA chapter, where every guest played a role and had clues to reveal.",
+    blurb:
+      "Murder at the FFA Banquet is a dinner-style murder mystery that I wrote, directed and produced for a local FFA chapter. Guests sat at tables and were given a role based on their seat, then talked within their table to solve the case. Every person had their own clues to reveal and dialogue lines to deliver. The FFA officer team played the suspects, and our advisor and teacher played the person who got killed. The slides show a few of the clues guests worked with, followed by two of the character information sheets that told each role who they were and how to act during the game.",
+    results: [
+      "Raised over $1,000",
+      "70 guests attended"
+    ],
+    role: "Writer, Director & Producer",
+    client: "Aplington-Parkersburg FFA Chapter",
+    skills: ["Creating Stories", "Event Planning", "Directing", "Clue Design"],
+    aspect: "17 / 22",
     slides: [
-      { src: "", alt: "Research question" },
-      { src: "", alt: "Key findings chart" },
-      { src: "", alt: "Recommendations" }
+      { src: "assets/img/projects/ffa-mystery/clue-25.jpg", alt: "Example clue: Butler County EMS incident summary", label: "Examples clues" },
+      { src: "assets/img/projects/ffa-mystery/clue-21.jpg", alt: "Example clue: internship application", label: "Examples clues" },
+      { src: "assets/img/projects/ffa-mystery/clue-27.jpg", alt: "Example clue: text message conversation", label: "Examples clues" },
+      { src: "assets/img/projects/ffa-mystery/clue-33.jpg", alt: "Example clue: sample chemical analysis report", label: "Examples clues" },
+      { src: "assets/img/projects/ffa-mystery/sibling-1.jpg", alt: "Character information example: Little Sibling, page 1", label: "Character Information Example" },
+      { src: "assets/img/projects/ffa-mystery/sibling-2.jpg", alt: "Character information example: Little Sibling, page 2", label: "Character Information Example" },
+      { src: "assets/img/projects/ffa-mystery/sibling-3.jpg", alt: "Character information example: Little Sibling, page 3", label: "Character Information Example" },
+      { src: "assets/img/projects/ffa-mystery/sibling-4.jpg", alt: "Character information example: Little Sibling, page 4", label: "Character Information Example" },
+      { src: "assets/img/projects/ffa-mystery/sheriff-1.jpg", alt: "Character information example: Town Sheriff, page 1", label: "Character Information Example" },
+      { src: "assets/img/projects/ffa-mystery/sheriff-2.jpg", alt: "Character information example: Town Sheriff, page 2", label: "Character Information Example" },
+      { src: "assets/img/projects/ffa-mystery/sheriff-3.jpg", alt: "Character information example: Town Sheriff, page 3", label: "Character Information Example" },
+      { src: "assets/img/projects/ffa-mystery/sheriff-4.jpg", alt: "Character information example: Town Sheriff, page 4", label: "Character Information Example" }
     ]
   },
   {
