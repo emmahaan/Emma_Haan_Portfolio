@@ -614,6 +614,7 @@ main > section:first-child > :not(.corner-swirls) { position: relative; z-index:
   border: 1px solid var(--lav-200);
   border-radius: var(--radius);
   background: linear-gradient(160deg, var(--lav-50), var(--lav-100));
+  text-align: center;
 }
 .stat::after {
   content: "";
@@ -628,14 +629,15 @@ main > section:first-child > :not(.corner-swirls) { position: relative; z-index:
 }
 .stat-num {
   display: block;
-  font-size: var(--fs-2xl);
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
+  font-size: clamp(2.4rem, 2rem + 1.6vw, 3.3rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
   font-variant-numeric: tabular-nums;
   color: var(--lav-700);
 }
-.stat-label { position: relative; z-index: 1; display: block; margin-top: 0.4rem; font-size: 0.92rem; line-height: 1.4; color: var(--text); }
+.stat-label { position: relative; z-index: 1; display: block; margin: 0.45rem auto 0; max-width: 20ch; font-size: 0.92rem; line-height: 1.4; color: var(--text); }
 
 /* Strength cards: slide in one by one, then tilt toward the mouse */
 .js .page-about .strength-grid .card[data-reveal] { transform: translateY(30px) scale(0.96); transition-delay: calc(var(--i, 0) * 130ms); }
@@ -648,10 +650,9 @@ main > section:first-child > :not(.corner-swirls) { position: relative; z-index:
 .js .page-about .strength-grid .card.tilt-on:hover { --ly: -4px; border-color: var(--lav-300); box-shadow: 0 14px 34px -14px rgba(111, 79, 194, 0.35); }
 
 /* Footprint trail down the left side (wide screens only) */
-.trail { position: absolute; top: 0; left: calc(50% - 634px); width: 44px; height: 100%; display: none; pointer-events: none; z-index: 0; }
-@media (min-width: 1300px) { .trail { display: block; } }
-.print { position: absolute; width: 23px; height: 46px; margin: -23px 0 0 -11.5px; fill: var(--lav-400); opacity: 0; transform: scale(0.4); transition: opacity 0.5s ease, transform 0.5s var(--ease); }
-.print.on { opacity: 0.6; transform: var(--t, none); }
+.trail { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; pointer-events: none; z-index: 0; }
+.print { position: absolute; fill: var(--lav-400); opacity: 0; transform: translate(-50%, -50%) scale(0.4); transition: opacity 0.5s ease, transform 0.5s var(--ease); }
+.print.on { opacity: 0.6; transform: var(--t, translate(-50%, -50%)); }
 .page-about main { position: relative; }
 
 /* 8. Home ------------------------------------------------------------------ */
@@ -992,8 +993,11 @@ main > section:first-child > :not(.corner-swirls) { position: relative; z-index:
 .stage {
   position: relative;
   margin-inline: auto;
+  /* Tall enough to read, short enough that the caption (top left) and the
+     next button (bottom right) stay on screen together */
+  --stage-h: clamp(300px, calc(100vh - 310px), 75vh);
   aspect-ratio: var(--aspect, 16 / 10);
-  max-height: 75vh;
+  max-height: var(--stage-h);
   overflow: hidden;
   background: #fff;
   border-radius: var(--radius);
@@ -1038,7 +1042,7 @@ main > section:first-child > :not(.corner-swirls) { position: relative; z-index:
 
 /* Caption in the top-left corner of the viewer: says what the slide is */
 .viewer-label {
-  margin: 0 0 0.7rem;
+  margin: 0 0 0.45rem;
   min-height: 1.5em;
   font-size: var(--fs-md, 1.05rem);
   font-weight: 700;
@@ -1052,7 +1056,7 @@ main > section:first-child > :not(.corner-swirls) { position: relative; z-index:
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  margin-top: 0.9rem;
+  margin-top: 0.7rem;
 }
 .viewer-btn {
   display: grid;

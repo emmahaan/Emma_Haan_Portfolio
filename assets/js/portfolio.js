@@ -121,7 +121,7 @@
       var r = ratio(a);
       stage.style.setProperty("--aspect", r.css);
       // Keep tall formats from running off the screen.
-      stage.style.maxWidth = "calc(75vh * " + r.value.toFixed(4) + ")";
+      stage.style.maxWidth = "calc(var(--stage-h, 75vh) * " + r.value.toFixed(4) + ")";
     }
 
     function fill(p) {

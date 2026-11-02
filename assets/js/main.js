@@ -311,34 +311,76 @@
     var trail = document.createElement("div");
     trail.className = "trail";
     trail.setAttribute("aria-hidden", "true");
-    main.insertBefore(trail, main.firstChild);
+    main.appendChild(trail);
     var prints = [];
+
+    // small seeded random generator, so the trail looks the same every visit
+    function rng(seed) {
+      return function () {
+        seed = (seed + 0x6D2B79F5) | 0;
+        var t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+        t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+      };
+    }
 
     function build() {
       trail.innerHTML = "";
       prints = [];
-      var H = main.offsetHeight, step = 108, n = Math.max(0, Math.floor((H - 260) / step));
-      for (var i = 0; i < n; i++) {
-        var y = 150 + i * step;
-        var cx = 22 + 9 * Math.sin(i * 0.5);
-        var slope = (9 * 0.5 * Math.cos(i * 0.5)) / (step / 2);   // how the path leans
-        var lean = Math.atan(slope) * 57.3;
-        var left = i % 2 === 0;
-        var el = document.createElement("span");
-        el.innerHTML = PRINT;
-        var svg = el.firstChild;
-        svg.setAttribute("class", "print");
-        svg.style.left = cx + (left ? -6 : 6) + "px";
-        svg.style.top = y + "px";
-        svg.style.setProperty("--t", "rotate(" + (180 - lean) + "deg)" + (left ? " scaleX(-1)" : ""));
-        trail.appendChild(svg);
-        prints.push({ el: svg, y: y });
+      // how much empty space is there to the left of the page content?
+      var left = Infinity;
+      $$(".about-photo, .stats, .story .card, .strength-grid, .section-head, .cta-panel").forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.width) left = Math.min(left, r.left);
+      });
+      var avail = left - 38;                        // keeps well clear of the photo frame and cards
+      if (!(avail >= 50)) return;                   // not enough room: no trail
+      var H = main.offsetHeight, rand = rng(11), y = 300;
+
+      while (y < H - 340) {
+        var D = 150 + rand() * 220;                 // height of this arc
+        var bulge = Math.min(D * 0.45, avail - 28); // how far it swings in from the edge
+        var cy = y + D / 2;
+        var scale = 0.65 + rand() * 0.6;            // each arc has its own print size
+        var spacing = (38 + rand() * 48) * scale;   // ...and its own walking pace
+        var t0 = -Math.PI / 2 + (rand() < 0.35 ? rand() * 0.55 : 0);
+        var t1 = Math.PI / 2 - (rand() < 0.35 ? rand() * 0.55 : 0);
+        var pts = [];
+        for (var k = 0; k <= 90; k++) {
+          var t = t0 + ((t1 - t0) * k) / 90;
+          pts.push([12 + bulge * Math.cos(t), cy + (D / 2) * Math.sin(t)]);
+        }
+        if (rand() < 0.4) pts.reverse();            // some arcs walk upward
+        var acc = 0, next = 0, foot = 0;
+        for (var s = 0; s < pts.length - 1; s++) {
+          var a = pts[s], b = pts[s + 1];
+          var dx = b[0] - a[0], dy = b[1] - a[1], seg = Math.sqrt(dx * dx + dy * dy);
+          while (acc + seg >= next) {
+            var f = (next - acc) / seg;
+            var nx = -dy / seg, ny = dx / seg, side = foot ? 1 : -1;
+            var px = a[0] + dx * f + nx * side * 5 * scale;
+            var py = a[1] + dy * f + ny * side * 5 * scale;
+            var ang = Math.atan2(dx, -dy) * 57.2958;
+            var el = document.createElement("span");
+            el.innerHTML = PRINT;
+            var svg = el.firstChild;
+            svg.setAttribute("class", "print");
+            svg.style.cssText = "left:" + px.toFixed(1) + "px;top:" + py.toFixed(1) + "px;width:" + (23 * scale).toFixed(1) + "px;height:" + (46 * scale).toFixed(1) + "px";
+            svg.style.setProperty("--t", "translate(-50%, -50%) rotate(" + ang.toFixed(1) + "deg)" + (foot ? "" : " scaleX(-1)"));
+            trail.appendChild(svg);
+            prints.push({ el: svg, y: py });
+            foot ^= 1;
+            next += spacing * (0.85 + rand() * 0.3);
+          }
+          acc += seg;
+        }
+        y += D + 130 + rand() * 360;
       }
       update();
     }
     function update() {
       var top = main.getBoundingClientRect().top;
-      var reach = window.innerHeight * 0.7 - top;      // how far down the page has been "walked"
+      var reach = window.innerHeight * 0.75 - top;    // how far down the page has been "walked"
       prints.forEach(function (p) { p.el.classList.toggle("on", p.y < reach); });
     }
     build();
