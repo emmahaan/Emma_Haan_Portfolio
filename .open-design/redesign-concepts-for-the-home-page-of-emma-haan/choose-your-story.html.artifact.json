@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "kind": "html",
+  "title": "Choose Your Story",
+  "entry": ".open-design/redesign-concepts-for-the-home-page-of-emma-haan/choose-your-story.html",
+  "renderer": "html",
+  "status": "complete",
+  "exports": [
+    "html",
+    "standalone",
+    "site",
+    "png",
+    "jpeg",
+    "pdf"
+  ],
+  "supportingFiles": [
+    "dragon-ink.png"
+  ],
+  "createdAt": "2026-11-07T17:42:56.555Z",
+  "updatedAt": "2026-11-07T17:44:19.740Z",
+  "sourceSkillId": "od:prototype:web-prototype",
+  "explorationId": "redesign-concepts-for-the-home-page-of-emma-haan",
+  "directionId": "choose-your-story",
+  "metadata": {
+    "exports": [
+      {
+        "path": ".open-design/redesign-concepts-for-the-home-page-of-emma-haan/exports/choose-your-story.html",
+        "format": "standalone",
+        "bytes": 3407643,
+        "exportedAt": "2026-11-07T17:44:19.740Z"
+      }
+    ]
+  }
+}

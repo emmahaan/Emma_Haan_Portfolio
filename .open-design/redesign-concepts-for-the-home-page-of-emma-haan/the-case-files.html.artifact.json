@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "kind": "html",
+  "title": "The Case Files",
+  "entry": ".open-design/redesign-concepts-for-the-home-page-of-emma-haan/the-case-files.html",
+  "renderer": "html",
+  "status": "complete",
+  "exports": [
+    "html",
+    "standalone",
+    "site",
+    "png",
+    "jpeg",
+    "pdf"
+  ],
+  "supportingFiles": [
+    "dragon-light.png"
+  ],
+  "createdAt": "2026-11-07T17:38:41.278Z",
+  "updatedAt": "2026-11-07T17:44:29.069Z",
+  "sourceSkillId": "od:prototype:web-prototype",
+  "explorationId": "redesign-concepts-for-the-home-page-of-emma-haan",
+  "directionId": "the-case-files",
+  "metadata": {
+    "exports": [
+      {
+        "path": ".open-design/redesign-concepts-for-the-home-page-of-emma-haan/exports/the-case-files.html",
+        "format": "standalone",
+        "bytes": 5348274,
+        "exportedAt": "2026-11-07T17:44:29.069Z"
+      }
+    ]
+  }
+}

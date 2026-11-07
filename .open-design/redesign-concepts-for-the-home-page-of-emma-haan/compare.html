@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="Open Design Agent Kit">
+<title>Redesign concepts for the home page of Emma Haan&#39;s… — directions</title>
+<style>
+:root { --bg: #f6f6f4; --surface: #fff; --fg: #1b1b1a; --muted: #6b6b66; --border: #e2e2dd; --accent: #2f6fde; --chosen: #1f8a4c; }
+@media (prefers-color-scheme: dark) { :root { --bg: #151514; --surface: #1e1e1c; --fg: #ededea; --muted: #a3a39d; --border: #34342f; --accent: #7aa7ff; --chosen: #4cc283; } }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }
+main { max-width: 1680px; margin: 0 auto; padding: 32px 24px 48px; }
+h1 { font-size: 26px; margin: 0 0 4px; letter-spacing: -0.01em; }
+.meta, .muted { color: var(--muted); }
+.brief { color: var(--muted); max-width: 900px; margin: 8px 0 0; }
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 28px; }
+@media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; min-width: 0; }
+.card.chosen { border: 2px solid var(--chosen); }
+.card header { display: flex; align-items: center; gap: 10px; }
+.card h2 { font-size: 16px; margin: 0; flex: 1 1 auto; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.badges { display: flex; gap: 6px; margin: 8px 0 12px 36px; }
+.index { flex: none; display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--fg); color: var(--surface); font-weight: 600; font-size: 13px; }
+.badge { font-size: 12px; color: var(--muted); border: 1px solid var(--border); border-radius: 999px; padding: 1px 8px; }
+.chosen-badge { color: var(--chosen); border-color: var(--chosen); font-weight: 600; }
+.frame { position: relative; aspect-ratio: 16 / 10; overflow: hidden; border: 1px solid var(--border); border-radius: 6px; background: #fff; }
+/* One-third scale: each preview gets a desktop-width virtual viewport (~1400px for a 470px card). */
+.frame iframe { position: absolute; top: 0; left: 0; width: 300%; height: 300%; border: 0; transform: scale(0.3333); transform-origin: 0 0; }
+.placeholder { display: grid; place-content: center; gap: 6px; text-align: center; color: var(--muted); background: repeating-linear-gradient(45deg, transparent 0 10px, var(--border) 10px 11px); }
+.summary { margin: 12px 0 4px; }
+.link { margin: 0; font-size: 13px; overflow-wrap: anywhere; }
+a { color: var(--accent); }
+code { font: 12px/1.4 ui-monospace, Menlo, monospace; color: var(--muted); }
+.built { margin-top: 32px; }
+.built h2 { font-size: 16px; }
+footer { margin-top: 32px; font-size: 13px; color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Redesign concepts for the home page of Emma Haan&#39;s…</h1>
+  <div class="meta">3 directions · Custom</div>
+  <p class="brief">Redesign concepts for the home page of Emma Haan&#39;s portfolio (Digital Storytelling student at Iowa State; writes custom stories and turns them into live murder-mystery events; also wrote/directed the short film Stolen; dream job is writing scripts for film, TV or video games). The current site is a clean but generic periwinkle template where the projects sit at the bottom. Goal: show off the projects and Emma herself as much as possible, with a real creative flourish — get creative and exotic. Use her real words, photos and project images from the repo (Emma_Photo.jpg, assets/img/emma-about.jpg, assets/img/projects/*, dragon logo assets/img/dragon-logo.png). Keep her dragon logo and a nod to her periwinkle (#5a66d6 / #959ff0) somewhere. Visitors are recruiters/internship hiring managers: they must reach the projects, the resume and contact quickly.</p>
+  <div class="grid">
+<article class="card" data-direction="the-case-files">
+  <header>
+    <span class="index">A</span>
+    <h2 title="The Case Files">The Case Files</h2>
+  </header>
+  <div class="badges"><span class="badge">Custom</span></div>
+  <div class="frame"><iframe src="the-case-files.html" title="The Case Files" scrolling="no"></iframe></div>
+  <p class="summary">Noir detective evidence board. The home page is a corkboard under a desk lamp: Emma&#39;s photo pinned as a polaroid labelled &#39;The Author&#39;, e…</p>
+  <p class="link"><a href="the-case-files.html">Open full size</a> <code>.open-design/redesign-concepts-for-the-home-page-of-emma-haan/the-case-files.html</code></p>
+</article>
+<article class="card" data-direction="opening-night">
+  <header>
+    <span class="index">B</span>
+    <h2 title="Opening Night">Opening Night</h2>
+  </header>
+  <div class="badges"><span class="badge">Custom</span></div>
+  <div class="frame"><iframe src="opening-night.html" title="Opening Night" scrolling="no"></iframe></div>
+  <p class="summary">1920s Art Deco theatre / cinema. Dark velvet ink background, gold-leaf and periwinkle neon, a marquee with chasing bulbs spelling EMMA HA…</p>
+  <p class="link"><a href="opening-night.html">Open full size</a> <code>.open-design/redesign-concepts-for-the-home-page-of-emma-haan/opening-night.html</code></p>
+</article>
+<article class="card" data-direction="choose-your-story">
+  <header>
+    <span class="index">C</span>
+    <h2 title="Choose Your Story">Choose Your Story</h2>
+  </header>
+  <div class="badges"><span class="badge">Custom</span></div>
+  <div class="frame"><iframe src="choose-your-story.html" title="Choose Your Story" scrolling="no"></iframe></div>
+  <p class="summary">Interactive storybook / game narrative, for someone who wants to write video games. A light parchment-and-periwinkle page styled like an …</p>
+  <p class="link"><a href="choose-your-story.html">Open full size</a> <code>.open-design/redesign-concepts-for-the-home-page-of-emma-haan/choose-your-story.html</code></p>
+</article>
+  </div>
+  
+  <footer>Generated by Open Design Agent Kit. Tell your agent which direction you want, e.g. “go with B” or “B, with A’s hero”.</footer>
+</main>
+</body>
+</html>

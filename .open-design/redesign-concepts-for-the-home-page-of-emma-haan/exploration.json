@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "explorationId": "redesign-concepts-for-the-home-page-of-emma-haan",
+  "title": "Redesign concepts for the home page of Emma Haan's…",
+  "brief": "Redesign concepts for the home page of Emma Haan's portfolio (Digital Storytelling student at Iowa State; writes custom stories and turns them into live murder-mystery events; also wrote/directed the short film Stolen; dream job is writing scripts for film, TV or video games). The current site is a clean but generic periwinkle template where the projects sit at the bottom. Goal: show off the projects and Emma herself as much as possible, with a real creative flourish — get creative and exotic. Use her real words, photos and project images from the repo (Emma_Photo.jpg, assets/img/emma-about.jpg, assets/img/projects/*, dragon logo assets/img/dragon-logo.png). Keep her dragon logo and a nod to her periwinkle (#5a66d6 / #959ff0) somewhere. Visitors are recruiters/internship hiring managers: they must reach the projects, the resume and contact quickly.",
+  "skillId": "web-prototype",
+  "skillMode": "prototype",
+  "axis": "custom",
+  "createdAt": "2026-11-07T17:36:03.920Z",
+  "directions": [
+    {
+      "id": "the-case-files",
+      "label": "The Case Files",
+      "axis": "custom",
+      "summary": "Noir detective evidence board. The home page is a corkboard under a desk lamp: Emma's photo pinned as a polaroid labelled 'The Author', e…",
+      "spec": "### The Case Files  `(id: the-case-files)`\n\nNoir detective evidence board. The home page is a corkboard under a desk lamp: Emma's photo pinned as a polaroid labelled 'The Author', each project pinned as a case file / manila folder with a typed label, a red string running between them, rubber stamps (SOLVED, $5,000+ RAISED, 1ST IN IOWA). Typewriter type (Special Elite) for labels, a heavy serif for headlines, periwinkle reinterpreted as a carbon-copy ink stamp. Scrolling opens the folders into a featured-case spread with her real results. Her murder-mystery work IS the brand.\n",
+      "entryPath": ".open-design/redesign-concepts-for-the-home-page-of-emma-haan/the-case-files.html"
+    },
+    {
+      "id": "opening-night",
+      "label": "Opening Night",
+      "axis": "custom",
+      "summary": "1920s Art Deco theatre / cinema. Dark velvet ink background, gold-leaf and periwinkle neon, a marquee with chasing bulbs spelling EMMA HA…",
+      "spec": "### Opening Night  `(id: opening-night)`\n\n1920s Art Deco theatre / cinema. Dark velvet ink background, gold-leaf and periwinkle neon, a marquee with chasing bulbs spelling EMMA HAAN, 'Now Showing' poster wall where every project is a one-sheet poster with a credits block ('Written & Directed by Emma Haan'), a playbill-style 'Cast' section introducing Emma with her photo framed in a deco arch, and a ticket-stub CTA for the resume. Fits the Wolf Mansion / Hemingway / Gatsby era of her best work and her film ambitions.\n",
+      "entryPath": ".open-design/redesign-concepts-for-the-home-page-of-emma-haan/opening-night.html"
+    },
+    {
+      "id": "choose-your-story",
+      "label": "Choose Your Story",
+      "axis": "custom",
+      "summary": "Interactive storybook / game narrative, for someone who wants to write video games. A light parchment-and-periwinkle page styled like an …",
+      "spec": "### Choose Your Story  `(id: choose-your-story)`\n\nInteractive storybook / game narrative, for someone who wants to write video games. A light parchment-and-periwinkle page styled like an illuminated storybook with the dragon logo as narrator. Opens with a chapter title and Emma's portrait in an ornate frame, then presents branching choices ('Follow the clues → her murder mysteries', 'Roll camera → her film', 'Meet the author → about Emma'), each opening a chapter spread for a project with a big image, a drop cap and her results as 'achievements unlocked'. Feels playful, literary and hand-made.\n",
+      "entryPath": ".open-design/redesign-concepts-for-the-home-page-of-emma-haan/choose-your-story.html"
+    }
+  ]
+}
