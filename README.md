@@ -25,7 +25,7 @@ Edit **`assets/js/projects.js`**. Each project is one `{ ... }` block. The comme
 
 1. Export each project as images (JPG/PNG, about 2000px wide). In PowerPoint, Google Slides or Canva, use File → Download/Export → JPG to get one image per slide. Upload them to a folder such as `assets/img/projects/my-project/`.
 2. List them under `slides` with `src`, `alt` (a short description) and an optional `label` (the caption under the page, e.g. "Example Clue"). The first slide is shown big as the collage; every slide after it appears below as a clue page visitors can click to magnify. For a video, make the first slide `{ embed: "https://www.youtube-nocookie.com/embed/VIDEO_ID?rel=0" }`.
-3. The Work page reads this file, so a new project appears there with its own tab automatically. Projects with more than 12 pages show as a smaller grid labelled by page number.
+3. The Work page reads this file, so a new project appears there with its own tab automatically. Projects with more than 16 pages show as a smaller grid; pages without a label are captioned by page number.
 4. The homepage posters are written directly in `index.html` (the "Now Showing" section): copy one `<a class="poster">` block to add a project there.
 5. Optional: a short headline for a project's rubber stamp goes in the `STAMPS` list at the top of `assets/js/work.js`.
 

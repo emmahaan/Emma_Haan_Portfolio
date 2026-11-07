@@ -52,12 +52,12 @@
             '<img src="' + ROOT + esc(first.src) + '" alt="' + esc(first.alt) + '"><span class="zoom-hint">' + lens + 'Magnify</span></button>';
       clues = images.slice(1);
     }
-    var many = clues.length > 12;
+    var many = clues.length > 16;
     var clueHtml = clues.length ? (
       '<div class="ev-head">The evidence<small>' + clues.length + ' pages · click to magnify</small></div>' +
       '<div class="clues' + (many ? " many" : "") + '">' + clues.map(function (s, k) {
         return '<button type="button" class="clue" data-open="' + (k + 1) + '" aria-label="Magnify ' + esc(items[k + 1].label) + ': ' + esc(s.alt) + '">' +
-               '<img src="' + ROOT + esc(s.src) + '" alt="" loading="lazy"><span class="lens">' + lens + '</span><span class="cap">' + (many ? "Page " + (k + 2) : esc(items[k + 1].label)) + '</span></button>';
+               '<img src="' + ROOT + esc(s.src) + '" alt="" loading="lazy"><span class="lens">' + lens + '</span><span class="cap">' + (many && !s.label ? "Page " + (k + 2) : esc(items[k + 1].label)) + '</span></button>';
       }).join("") + '</div>') : "";
     var blurb = [].concat(p.blurb || []).map(function (t) { return "<p>" + esc(t) + "</p>"; }).join("");
     var dl = [["Role", p.role], ["Client", p.client], ["Tools", (p.tools || []).join(", ")], ["Skills", (p.skills || []).join(", ")]]
