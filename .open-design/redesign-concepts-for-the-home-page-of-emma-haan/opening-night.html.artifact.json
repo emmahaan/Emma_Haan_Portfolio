@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "kind": "html",
+  "title": "Opening Night",
+  "entry": ".open-design/redesign-concepts-for-the-home-page-of-emma-haan/opening-night.html",
+  "renderer": "html",
+  "status": "complete",
+  "exports": [
+    "html",
+    "standalone",
+    "site",
+    "png",
+    "jpeg",
+    "pdf"
+  ],
+  "supportingFiles": [
+    "dragon-light.png"
+  ],
+  "createdAt": "2026-11-07T17:41:10.852Z",
+  "updatedAt": "2026-11-07T17:44:19.625Z",
+  "sourceSkillId": "od:prototype:web-prototype",
+  "explorationId": "redesign-concepts-for-the-home-page-of-emma-haan",
+  "directionId": "opening-night",
+  "metadata": {
+    "exports": [
+      {
+        "path": ".open-design/redesign-concepts-for-the-home-page-of-emma-haan/exports/opening-night.html",
+        "format": "standalone",
+        "bytes": 2629085,
+        "exportedAt": "2026-11-07T17:44:19.624Z"
+      }
+    ]
+  }
+}

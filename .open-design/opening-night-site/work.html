@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Work | Emma Haan</title>
+<meta name="description" content="Emma Haan is a Digital Storytelling student at Iowa State University who writes custom stories and creates events.">
+<meta name="theme-color" content="#0d0b18">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Limelight&family=Josefin+Sans:wght@300;400;600;700&family=Oswald:wght@300;500;600&family=Cormorant+Garamond:ital,wght@0,500;1,500;1,600&family=Special+Elite&display=swap">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav" data-od-id="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Emma Haan, home"><img src="dragon-light.png" alt="" width="40" height="40"><span>Emma Haan</span></a>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="work.html" aria-current="page">Work</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a class="res" href="../../assets/files/Emma_Haan_Resume.pdf" target="_blank" rel="noopener">Click to view my resume</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+<nav class="mobile-menu" id="mobile-menu" aria-label="Mobile">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="work.html" aria-current="page">Work</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a class="ticket" href="../../assets/files/Emma_Haan_Resume.pdf" target="_blank" rel="noopener"><span class="stub">Admit one</span><span class="main"><small>Box office</small>Click to view my resume</span></a>
+</nav>
+
+<main id="main">
+<section class="stage sm" data-od-id="work-hero" aria-label="Work">
+  <div class="curtain l" aria-hidden="true"></div><div class="curtain r" aria-hidden="true"></div><div class="valance" aria-hidden="true"></div>
+  <div class="marquee-wrap">
+    <p class="presents">The complete season</p>
+    <div class="marquee">
+      <span class="bulbs" aria-hidden="true"></span><span class="bulbs b2" aria-hidden="true"></span>
+      <div class="over">Now showing</div>
+      <h1>THE CASE FILES</h1>
+      <p class="line">Five productions, every clue on the table. <em>Click any page</em> to take a closer look.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" data-od-id="case-files" aria-label="Projects" style="padding-top:64px;background:linear-gradient(var(--night),var(--night-2) 40%)">
+  <div class="wrap">
+    <div class="season" role="tablist" aria-label="Choose a project" id="season"></div>
+    <div id="case" role="tabpanel" tabindex="-1" aria-live="polite"></div>
+    <noscript><p class="sub">Turn on JavaScript to open the case files, or <a href="../../portfolio.html">see the projects here</a>.</p></noscript>
+  </div>
+</section>
+</main>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-labelledby="lb-label" hidden>
+  <div class="lb-top">
+    <span class="lb-label" id="lb-label"></span><span class="lb-count" id="lb-count"></span>
+    <span class="sp"></span>
+    <button class="lb-btn" type="button" id="lb-zoom" aria-label="Magnify" title="Magnify (Z)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></button>
+    <button class="lb-btn" type="button" id="lb-close" aria-label="Close" title="Close (Esc)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <div class="lb-stage" id="lb-stage"><img id="lb-img" alt=""></div>
+  <button class="lb-btn lb-side prev" type="button" id="lb-prev" aria-label="Previous page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+  <button class="lb-btn lb-side next" type="button" id="lb-next" aria-label="Next page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+  <div class="lb-foot"><span id="lb-alt"></span><small>Click the page to magnify · ← → to flip · Esc to close</small></div>
+</div>
+<footer class="foot" data-od-id="footer">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <a class="brand" href="index.html" aria-label="Emma Haan, home"><img src="dragon-light.png" alt="" width="40" height="40"><span>Emma Haan</span></a>
+        <p>Digital Storytelling student at Iowa State University looking to write stories and create events.</p>
+      </div>
+      <nav aria-label="Footer">
+        <h2>The program</h2>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="work.html">Work</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h2>Stage door</h2>
+        <ul>
+          <li><a href="mailto:emma.haan2530@gmail.com">emma.haan2530@gmail.com</a></li>
+          <li><a href="https://www.linkedin.com/in/emma-haan-779314435/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="../../assets/files/Emma_Haan_Resume.pdf" target="_blank" rel="noopener">Click to view my resume</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fin"><b>Emma Haan</b><span>Ames, Iowa · Open to Writing, Event Planning or Media-Related roles</span></div>
+  </div>
+</footer>
+<script src="site.js"></script>
+<script src="../../assets/js/projects.js"></script>
+<script src="work.js"></script>
+</body>
+</html>

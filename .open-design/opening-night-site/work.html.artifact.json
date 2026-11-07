@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "kind": "html",
+  "title": "Opening Night — Work (case files)",
+  "entry": ".open-design/opening-night-site/work.html",
+  "renderer": "html",
+  "status": "complete",
+  "exports": [
+    "html",
+    "standalone",
+    "site",
+    "png",
+    "jpeg",
+    "pdf"
+  ],
+  "supportingFiles": [
+    "site.css",
+    "site.js",
+    "work.js",
+    "dragon-light.png"
+  ],
+  "createdAt": "2026-11-07T19:34:41.389Z",
+  "updatedAt": "2026-11-07T19:36:35.662Z",
+  "sourceSkillId": "od:prototype:web-prototype",
+  "collectionId": "opening-night-site",
+  "collectionName": "Emma Haan — Opening Night site",
+  "screenRole": "work",
+  "screenIndex": 2,
+  "metadata": {
+    "exports": [
+      {
+        "path": ".open-design/opening-night-site/exports/work.html",
+        "format": "standalone",
+        "bytes": 114815,
+        "exportedAt": "2026-11-07T19:36:35.662Z"
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "kind": "html",
+  "title": "Opening Night — About",
+  "entry": ".open-design/opening-night-site/about.html",
+  "renderer": "html",
+  "status": "complete",
+  "exports": [
+    "html",
+    "standalone",
+    "site",
+    "png",
+    "jpeg",
+    "pdf"
+  ],
+  "supportingFiles": [
+    "site.css",
+    "site.js",
+    "dragon-light.png"
+  ],
+  "createdAt": "2026-11-07T19:34:41.374Z",
+  "updatedAt": "2026-11-07T19:36:35.848Z",
+  "sourceSkillId": "od:prototype:web-prototype",
+  "collectionId": "opening-night-site",
+  "collectionName": "Emma Haan — Opening Night site",
+  "screenRole": "about",
+  "screenIndex": 1,
+  "metadata": {
+    "exports": [
+      {
+        "path": ".open-design/opening-night-site/exports/about.html",
+        "format": "standalone",
+        "bytes": 848829,
+        "exportedAt": "2026-11-07T19:36:35.848Z"
+      }
+    ]
+  }
+}
