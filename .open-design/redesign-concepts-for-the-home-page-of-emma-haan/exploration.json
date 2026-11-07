@@ -32,5 +32,11 @@
       "spec": "### Choose Your Story  `(id: choose-your-story)`\n\nInteractive storybook / game narrative, for someone who wants to write video games. A light parchment-and-periwinkle page styled like an illuminated storybook with the dragon logo as narrator. Opens with a chapter title and Emma's portrait in an ornate frame, then presents branching choices ('Follow the clues → her murder mysteries', 'Roll camera → her film', 'Meet the author → about Emma'), each opening a chapter spread for a project with a big image, a drop cap and her results as 'achievements unlocked'. Feels playful, literary and hand-made.\n",
       "entryPath": ".open-design/redesign-concepts-for-the-home-page-of-emma-haan/choose-your-story.html"
     }
-  ]
+  ],
+  "chosen": {
+    "directionId": "opening-night",
+    "next": "merge",
+    "notes": "Flesh out Opening Night into all pages (Home, About, Work, Contact). On the Work/projects page use the case-file dossier layout: big collage, clues below; clicking a clue magnifies it so the viewer can read it.",
+    "chosenAt": "2026-11-07T19:28:58.380Z"
+  }
 }
