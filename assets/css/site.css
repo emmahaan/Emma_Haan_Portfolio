@@ -409,6 +409,29 @@ button{font:inherit}
   .story-card{padding:40px 22px 28px}
 }
 
+/* 11c Work page: compact case file (original manila style, sized to fit one screen) */
+.dossier.compact{margin-top:58px;grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);padding:22px}
+.dossier.compact .d-left{padding:14px 30px 8px 8px;display:flex;flex-direction:column}
+.dossier.compact .collage{width:fit-content;max-width:100%;margin:0 auto}
+.dossier.compact .collage img{max-height:350px;width:auto;max-width:100%;margin:0 auto}
+.dossier.compact .video{width:100%}
+.dossier.compact .ev-head{margin:26px 0 14px}
+.clues.row{grid-template-columns:repeat(6,minmax(0,1fr));gap:14px 12px}
+.clues.row .clue{padding:5px 5px 30px}
+.clues.row .clue .cap{font-size:9.5px;height:26px}
+.clues.row .clue .lens{width:24px;height:24px;top:8px;right:8px}
+.clue.more{display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fffaf0}
+.clue.more .stack{position:relative;width:62%;aspect-ratio:17/22;background:#fff;border:1px solid #c9b88f;box-shadow:4px 4px 0 #efe4c8,8px 8px 0 #e3d4ad}
+.clue.more b{position:absolute;top:34%;left:0;right:0;text-align:center;font-family:var(--deco);font-weight:400;font-size:26px;color:var(--peri-dk)}
+.dossier.compact .d-right{margin-left:22px;padding:36px 36px 32px;display:flex;flex-direction:column}
+.dossier.compact .d-right h2{font-family:var(--deco);font-weight:400;font-size:29px;line-height:1.1;margin:8px 0 10px}
+.dossier.compact .d-right .tagline{font-family:var(--serif);font-style:italic;font-size:18.5px;line-height:1.4;color:#3b3552;margin:0}
+.dossier.compact .dl{margin:16px 0}
+.dossier.compact .exhibits{margin:0 0 22px}
+.dossier.compact .exhibits li{font-size:15px;padding:7px 0}
+.dossier.compact .row-btns{margin-top:auto}
+.dossier.compact .d-right .stamp{right:24px;top:-24px}
+
 /* 15 Responsive */
 @media (max-width:1100px){
   .posters{grid-template-columns:repeat(2,1fr)}
@@ -495,4 +518,22 @@ button{font:inherit}
   .poster,.ticket,.clue{transition:none}
   .js [data-reveal]{opacity:1;transform:none;transition:none}
   html{scroll-behavior:auto}
+}
+
+@media (max-width:1100px){
+  .dossier.compact{grid-template-columns:1fr}
+  .dossier.compact .d-left{padding:6px 2px 24px}
+  .dossier.compact .d-right{margin-left:0}
+}
+@media (max-width:620px){
+  .dossier.compact{padding:12px;margin-top:52px}
+  .dossier.compact .collage img{max-height:420px}
+  .dossier.compact .d-right{padding:34px 20px 26px}
+  .dossier.compact .d-right h2{font-size:25px}
+  .dossier.compact .d-right .stamp{right:12px}
+  .clues.row{grid-template-columns:repeat(4,minmax(0,1fr));gap:10px 8px}
+  .clues.row .clue{padding:3px 3px 24px}
+  .clues.row .clue .cap{font-size:8.5px;height:22px}
+  .clues.row .clue .lens{display:none}
+  .clue.more b{font-size:20px}
 }
