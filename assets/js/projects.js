@@ -80,7 +80,7 @@ window.PROJECTS = [
     featured: true,
     tagline: "A short film where a group of friends go on a mission to get back what was stolen from them.",
     blurb:
-      "Stolen is a student-made short film that I wrote, helped direct and acted in. Lennon calls his friends together to tell them that something was stolen from him, and according to Lennon it is sitting in a girl named Lisa\u2019s house. The group sets out on a mission to break in and take it back. As head writer I wrote the script, shaping the story and characters, and I worked with the cast as a director while also performing on screen.",
+      "Stolen is a student-made short film that I wrote, helped direct and acted in. Lennon calls his friends together to tell them that something was stolen from him, and according to Lennon it is located at Lisa\u2019s house. The group sets out on a mission to break in and take it back. As head writer I wrote the script, shaping the story and characters, and I worked with the cast as a director while also performing on screen.",
     results: [
       "Received the highest rating at two film contests",
       "Received all-state recognition from the Iowa High School Speech Association"
