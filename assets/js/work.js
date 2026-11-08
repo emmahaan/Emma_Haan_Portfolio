@@ -19,11 +19,12 @@
   var nice = function (t) { return esc(String(t || "").replace(/©/g, "©")); };
   var lens = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>';
   var current = 0, pages = [];
+  var small = window.matchMedia("(max-width: 620px)");
 
   function pagesOf(p) {
     return (p.slides || []).filter(function (s) { return s.src; }).map(function (s, k) {
       var a = (s.alt || "").split(":")[0];
-      return { src: s.src, alt: s.alt || "", label: s.label || (k === 0 ? "The collage" : (a.length > 26 ? "Page " + (k + 1) : a)), wide: (s.aspect || "").indexOf("16") === 0 };
+      return { src: s.src, alt: s.alt || "", label: s.label || (k === 0 ? "The collage" : (a.length > 18 ? "Page " + (k + 1) : a)), wide: (s.aspect || "").indexOf("16") === 0 };
     });
   }
 
@@ -43,21 +44,28 @@
     pages = pagesOf(p);
     var first = (p.slides || [])[0], em = first && first.embed ? first : null, st = STAMPS[p.id];
     var big = em
-      ? '<div class="vid"><div class="fallback">STOLEN</div><iframe src="' + esc(em.embed) + '" title="' + esc(em.alt || p.title) + '" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>'
-      : '<button type="button" class="frame-img" data-m="0" aria-label="Magnify: ' + esc(pages[0].alt) + '"><img src="' + esc(pages[0].src) + '" alt="' + esc(pages[0].alt) + '"><span class="zoom-hint">' + lens + 'Magnify</span></button>';
+      ? '<div class="video"><div class="fallback"><b>STOLEN</b></div><iframe src="' + esc(em.embed) + '" title="' + esc(em.alt || p.title) + '" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>'
+      : '<button type="button" class="collage" data-m="0" aria-label="Magnify: ' + esc(pages[0].alt) + '"><img src="' + esc(pages[0].src) + '" alt="' + esc(pages[0].alt) + '"><span class="zoom-hint">' + lens + 'Magnify</span></button>';
     var clues = em ? [] : pages.slice(1);
+    var SHOW = small.matches ? 4 : 6;              // one row of clue pages; the rest open from the "+ more" tile
+    var shown = clues.length > SHOW ? clues.slice(0, SHOW - 1) : clues, more = clues.length - shown.length;
     var prev = P[(i - 1 + P.length) % P.length], next = P[(i + 1) % P.length];
     box.innerHTML =
-      '<article class="fa"><div class="fa-top">' + big +
-        '<div class="fa-info">' + (st ? '<div class="small-stamp"><b>' + esc(st[0]) + '</b><small>' + esc(st[1]) + '</small></div>' : '') +
-          '<div class="meta">' + esc(p.category) + ' · ' + esc(p.year) + '</div><h2 class="ttl">' + nice(p.title) + '</h2><p class="tag-line">' + esc(p.tagline) + '</p>' +
-          '<ul class="mini-results">' + (p.results || []).slice(0, 3).map(function (r) { return '<li>' + esc(r) + '</li>'; }).join('') + '</ul>' +
-          '<div class="row-btns"><button type="button" class="pill solid" data-story>Read the full story</button>' + (em ? '' : '<button type="button" class="pill" data-m="0">' + lens + 'Magnify collage</button>') + '</div>' +
-        '</div></div>' +
-        (clues.length ? '<div class="fa-strip"><div class="sh">The evidence · ' + clues.length + ' pages<button type="button" data-scroll="-1" aria-label="Scroll left">‹</button><button type="button" data-scroll="1" aria-label="Scroll right">›</button></div><div class="reel">' +
-          clues.map(function (c, k) {
-            return '<button type="button" class="thumb' + (c.wide ? ' wide' : '') + '" data-m="' + (k + 1) + '" aria-label="Magnify ' + esc(c.label) + ': ' + esc(c.alt) + '"><img src="' + esc(c.src) + '" alt="" loading="lazy"><span class="c">' + esc(c.label) + '</span></button>';
-          }).join('') + '</div></div>' : '') +
+      '<article class="dossier compact"><span class="file-tab">CASE No. ' + String(i + 1).padStart(2, "0") + '<span class="cat"> · ' + esc((p.category || "").toUpperCase()) + '</span></span>' +
+        '<div class="d-left">' + big +
+          (clues.length ? '<div class="ev-head">The evidence<small>' + clues.length + ' pages · click to magnify</small></div><div class="clues row">' +
+            shown.map(function (c, k) {
+              return '<button type="button" class="clue" data-m="' + (k + 1) + '" aria-label="Magnify ' + esc(c.label) + ': ' + esc(c.alt) + '"><img src="' + esc(c.src) + '" alt="" loading="lazy"><span class="lens">' + lens + '</span><span class="cap">' + esc(c.label) + '</span></button>';
+            }).join('') +
+            (more ? '<button type="button" class="clue more" data-m="' + (shown.length + 1) + '" aria-label="See ' + more + ' more pages"><span class="stack" aria-hidden="true"></span><b>+' + more + '</b><span class="cap">more pages</span></button>' : '') +
+          '</div>' : '') +
+        '</div>' +
+        '<div class="d-right">' + (st ? '<div class="stamp"><b>' + esc(st[0]) + '</b><small>' + esc(st[1]) + '</small></div>' : '') +
+          '<div class="k">' + esc(p.category) + ' · ' + esc(p.year) + '</div><h2>' + nice(p.title) + '</h2><p class="tagline">' + esc(p.tagline) + '</p>' +
+          '<dl class="dl"><dt>Role</dt><dd>' + esc(p.role) + '</dd>' + (p.client ? '<dt>Client</dt><dd>' + esc(p.client) + '</dd>' : '') + '</dl>' +
+          ((p.results || []).length ? '<ol class="exhibits">' + p.results.slice(0, 3).map(function (r) { return '<li><span>' + esc(r) + '</span></li>'; }).join('') + '</ol>' : '') +
+          '<div class="row-btns"><button type="button" class="btn" data-story>Read the full story</button></div>' +
+        '</div>' +
       '</article>' +
       '<nav class="case-nav" aria-label="More projects"><button type="button" data-go="' + ((i - 1 + P.length) % P.length) + '"><small>← Previous showing</small><b>' + nice(prev.tabTitle || prev.title) + '</b></button>' +
       '<button type="button" data-go="' + ((i + 1) % P.length) + '"><small>Next showing →</small><b>' + nice(next.tabTitle || next.title) + '</b></button></nav>';
@@ -158,4 +166,5 @@
   function fromHash() { var id = location.hash.slice(1), k = P.findIndex(function (p) { return p.id === id; }); return k < 0 ? 0 : k; }
   show(fromHash(), false);
   window.addEventListener("hashchange", function () { show(fromHash(), false); });
+  if (small.addEventListener) small.addEventListener("change", function () { render(P[current], current); });
 })();
